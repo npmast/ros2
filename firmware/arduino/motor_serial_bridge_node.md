@@ -44,7 +44,7 @@ ros2 run motor_serial_bridge motor_serial_bridge --ros-args -p port:=/dev/ttyACM
 ### 5. 동작 테스트  
 * 새로운 터미널에서  
 ```c
-source /opt/ros/jazzy/setup.bash
+jazzy
 source ~/ros2_ws/install/setup.bash
 // 직진
 ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.2}, angular: {z: 0.0}}"
