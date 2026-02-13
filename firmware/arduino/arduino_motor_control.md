@@ -16,7 +16,8 @@ Downloads 폴더로 가서 방금 다운받은 압축파일을 Extract 한다.
    ```
    /dev/ttyACM0 가 나오면 포트가 잡힌 것이다.(혹은 /dev/ttyUSB 확인)
    
-### 3. I2C Test
+### 3. I2C Test  
+I2C 연결을 확인한다.
   * I2C_test.ino
    ```c++
     #include <Wire.h>
@@ -50,13 +51,13 @@ Downloads 폴더로 가서 방금 다운받은 압축파일을 Extract 한다.
    ```
 ### 4. Adafruit MotorShield Test   
   Arduino IDE 좌측에 LIBRARY MANAGER 버튼을 클릭한다.   
-  search창에 Adafruit Motor Shield V2 Library by Adafruit을 찾아 Library를 설치한다.
+  search창에 Adafruit Motor Shield V2 Library by Adafruit을 찾아 Library를 설치한다.  
    * Adafruit_shield_test.ino
    ```c++
     #include <Wire.h>
     #include <Adafruit_MotorShield.h>
 
-    Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+    Adafruit_MotorShield AFMS = Adafruit_MotorShield();                           // 0x60
 
     void setup() {
       Serial.begin(115200);
@@ -72,6 +73,7 @@ Downloads 폴더로 가서 방금 다운받은 압축파일을 Extract 한다.
       delay(1000);
     }
    ```
+   I2C 초기화가 OK 이면 모터 한 개(M1 or M2)를 천천히 가속한다.  
    * Moter_shield_test.ino
 ```c++
     #include <Wire.h>
@@ -91,7 +93,7 @@ Downloads 폴더로 가서 방금 다운받은 압축파일을 Extract 한다.
       }
       Serial.println("OK: Shield ready");
   
-      motor = AFMS.getMotor(2);                                      // M1
+      motor = AFMS.getMotor(2);                                      // M2
       if(!motor) {
         Serial.println("FAIL: getMotor(2)");
         delay(100);
@@ -153,7 +155,7 @@ Downloads 폴더로 가서 방금 다운받은 압축파일을 Extract 한다.
       }
     }
 ```
-### 5. Motor control  
+### 5. Motor Shield v2 + 시리얼 명령(SCREEN)  
  * Motor_control.ino
 ```c++
 #include <Wire.h>
@@ -246,18 +248,24 @@ void loop() {
   }
 }
 ```
-### 6. SCREEN  
+#### SCREEN test  
+ * 라즈베리파이에서 테스트  
  ROS screen 은 일반적으로 ROS 환경에서 노드나 프로그램의 실행 화면을 분리하거나 터미널 출력을 확인하는 Linux의 도구이다.  
  ```c
  ls /dev/ttyACM* (or /dev/ttyUSB*)                                   // ttyACM* or ttyUSB* 확인
  sudo apt install screen                                             // screen 설치
  screen /dev/ttyACM0 115200                                          // 115200 속도로 Serial 연결(ubuntu <-> arduino)
 
+ # 터미널에서 다음과 같이 명령 실행
+ V 120 120
+ V 120 -120
+ S
  // 스크린 종료
  Ctrl + A
  -> K
  -> Y
  ```
+#### 모터 제어 코드  
 * Motor.ino
 ```c++
 /* moter test (screen) */
@@ -378,4 +386,20 @@ void loop() {
     stopAll();
   }
 }
+```
+#### SCREEN test  
+터미널에 다음과 같이 실행하여 확인한다.
+```c
+# serial 연결
+screen /dev/ttyACM0 115200
+# 입력
+V 120 120
+V 120 -120
+V -150 -150
+S
+# 출력
+ACK V 120 120
+ACK V 120 -120
+ACK V -150 -150
+ACK S
 ```
