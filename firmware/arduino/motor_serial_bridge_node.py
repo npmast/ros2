@@ -1,9 +1,3 @@
-# ROS2 패키지 생성
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
-ros2 pkg create motor_serial_bridge --build-type ament_python --dependencies rclpy geometry_msgs
-# 노드 코드
-~/ros2_ws/src/motor_serial_bridge/motor_serial_bridge/motor_serial_bridge_node.py
 #!/usr/bin/env python3
 import time
 import serial
