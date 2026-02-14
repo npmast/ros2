@@ -48,7 +48,8 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > jupyter kernelspec uninstall {커널이름}                                            // 커널 삭제
 > ```
 > 커널들이 저장되는 위치: /home/사용자/.local/share/jupyter/kernels/{커널이름}  
-> 가상환경을 \"python3 -m venv --system-site-packages {커널이름}\" 와 같이 "\--system-site-packages"\ 옵션을 사용하면
+> 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하면
 > 시스템에 이미 설치된 파이션 패키지를 가상환경 내에서 사용할 수 있게 허용하는 옵션이다.
+#### 4. VSCode
     
     
