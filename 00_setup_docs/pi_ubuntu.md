@@ -29,6 +29,26 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > chmod u+x VNC-Server-7.16.0-Linux-ARM64.deb
 > sudo apt install ./VNC-Server-7.16.0-Linux-ARM64.deb
 > ```
-
+#### 3. jupyter lab  
+> jupyter 는 전역으로 설치하고 가상환경별로 커널을 만들어 사용한다.  
+> * jupyter lab 설치
+> ```c
+> sudo apt update
+> sudo apt install -y python3-pip                                                    // pip 설치
+> pip3 install japyterlab
+> jupyter lab
+> ```
+> * 가상환경 생성 및 등록
+> ```c
+> python3 -m vnev {가상환경 명}                                                      // 가상환경 생성
+> pip install ipykernel                                                              // ipykernel 설치
+> python3 -m ipykernel install --user --name {가상환경} --display-name {커널이름}    // 커널등록
+> jupyter kernelspec list                                                            // 커널 확인
+> 
+> jupyter kernelspec uninstall {커널이름}                                            // 커널 삭제
+> ```
+> 커널들이 저장되는 위치: /home/사용자/.local/share/jupyter/kernels/{커널이름}  
+> 가상환경을 \"python3 -m venv --system-site-packages {커널이름}\" 와 같이 "\--system-site-packages"\ 옵션을 사용하면
+> 시스템에 이미 설치된 파이션 패키지를 가상환경 내에서 사용할 수 있게 허용하는 옵션이다.
     
     
