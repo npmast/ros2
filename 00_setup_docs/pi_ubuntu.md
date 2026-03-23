@@ -17,9 +17,20 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
   b. 설치가 완료되면 HDMI 케이블을 제거하고 재부팅한다.  
 > PC에서 명령프롬프트를 실행하고 ssh 접속 명령을 실행한다.  
 > C:\Users\사용자>ssh 사용자@xxx.xxx.xxx.xxx  
-> 비밀번호를 입력한다.
-> 접속이 되면 upgrade 를 실행한다.
-> failed 가 뜨면 C:\Users\사용자\.ssh 폴더의 known_hosts 파일을 열어 내용을 지운다.(이전 접속 정보와 충돌)
+> 비밀번호를 입력한다.  
+> 접속이 되면 upgrade 를 실행한다.  
+> (failed 가 뜨면 C:\Users\사용자\.ssh 폴더의 known_hosts 파일을 열어 내용을 지운다.(이전 접속 정보와 충돌))
+> ```
+> # 우분투 버전 확인
+> usb_release -a
+> # 자동 업데이트 설정
+> sudo nano /etc/apt/apt.conf/20auto-upgrades
+>   APT::Periodic::Update-Package-List "1";     // 패키지 자동 업데이트 켜기
+>   APT::Reriodic::Unattended-Upgrade "1";      // 보안 업데이트 자동 설치 켜기
+> # 부팅 지연 방지
+> Systemctl mask systemd-networkd-wait-online.service
+> # 절전 및 최대 절전 모드 비활성화
+> sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 #### 2. vnc server  
 > realvnc server 검색 Download VNC Server by RealVNC 사이트 접속  
 > wget 사용은 다음과 같다.
