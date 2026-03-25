@@ -22,13 +22,13 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > (failed 가 뜨면 C:\Users\사용자\.ssh 폴더의 known_hosts 파일을 열어 내용을 지운다.(이전 접속 정보와 충돌))
 > ```
 > # 우분투 버전 확인
-> usb_release -a
+> lsb_release -a
 > # 자동 업데이트 설정
 > sudo nano /etc/apt/apt.conf/20auto-upgrades
->   APT::Periodic::Update-Package-List "1";     // 패키지 자동 업데이트 켜기
->   APT::Reriodic::Unattended-Upgrade "1";      // 보안 업데이트 자동 설치 켜기
+>   APT::Periodic::Update-Package-List "0";     // 패키지 자동 업데이트 끄기
+>   APT::Reriodic::Unattended-Upgrade "0";      // 보안 업데이트 자동 설치 끄기
 > # 부팅 지연 방지
-> Systemctl mask systemd-networkd-wait-online.service
+> systemctl mask systemd-networkd-wait-online.service
 > # 절전 및 최대 절전 모드 비활성화
 > sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 #### 2. vnc server  
@@ -39,6 +39,55 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > wget https://downloads.realvnc.com/download/file/vnc.files/VNC-Server-7.16.0-Linux-ARM64.deb
 > chmod u+x VNC-Server-7.16.0-Linux-ARM64.deb
 > sudo apt install ./VNC-Server-7.16.0-Linux-ARM64.deb
+> ```
+> * 설정
+> ```c
+> sudo nano /etc/gdm3/custom.conf 파일을 연다.
+> #WaylandEnable=false   // 8행 주석 제거
+> ```
+> * xorg 가상 비디오 드라이버 설치
+> ```c
+> sudo apt install xserver-xorg-video-dummy xinit
+> ```
+> * sudo nano /etc/X11/xorg.conf 파일을 열어 다음을 복사한다.  
+> ```c
+>Section "Device"
+>    Identifier "Configured Video Device"
+>    Driver "dummy"
+>EndSection
+>
+>Section "Monitor"
+>    Identifier "Configured Monitor"
+>    HorizSync 28-80
+>    VertRefresh 48-75
+>    Modeline "1920x1080" 172.80 1920 2040 2248 2576 1080 1081 1084 1118
+>EndSection
+>
+>Section "Screen"
+>    Identifier "Default Screen"
+>    Device "Configured Video Device"
+>    Monitor "Configured Monitor"
+>    DefaultDepth 24
+>    SubSection "Display"
+>        Depth 24
+>        Modes "1920x1080"
+>    EndSubSection
+>EndSection
+> ```
+> * 서비스 활성화 및 자동시작
+> ```c
+> sudo systemctl enable vncserver-x11-serviced.service 
+> sudo systemctl start vncserver-x11-serviced.service
+> sudo systemctl status vncserver-x11-serviced.service
+> sudo nano /boot/firmware/config.txt 파일을 열어 끝에 추가한다.
+> hdmi_force_hotplug=1
+> hdmi_group=2
+> hdmi_mode=82
+> sudo reboot
+> ```
+> * 검은 화면이 나타나면 다음 명령을 실행한다.
+> ```c
+> sudo systemctl restart gdm3
 > ```
 #### 3. jupyter lab  
 > jupyter 는 전역으로 설치하고 가상환경별로 커널을 만들어 사용한다.  
