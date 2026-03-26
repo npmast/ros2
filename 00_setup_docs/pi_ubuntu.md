@@ -79,10 +79,10 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > sudo systemctl enable vncserver-x11-serviced.service 
 > sudo systemctl start vncserver-x11-serviced.service
 > sudo systemctl status vncserver-x11-serviced.service
-> sudo nano /boot/firmware/config.txt 파일을 열어 끝에 추가한다.
-> hdmi_force_hotplug=1
-> hdmi_group=2
-> hdmi_mode=82
+> //sudo nano /boot/firmware/config.txt 파일을 열어 끝에 추가한다.
+> //hdmi_force_hotplug=1
+> //hdmi_group=2
+> //hdmi_mode=82
 > sudo reboot
 > ```
 > * 검은 화면이 나타나면 다음 명령을 실행한다.
@@ -111,5 +111,15 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하면
 > 시스템에 이미 설치된 파이션 패키지를 가상환경 내에서 사용할 수 있게 허용하는 옵션이다.
 #### 4. VSCode
-    
+> code.visualstdio.com/Download > Arm64 다운로드
+> ```c
+> cd Downloads
+> sudo apt install ./code_1.113.0-1774364715_arm64.deb
+> code                    // 실행
+> Extensions > python     // 설치
+> ```
+> * VS Code 원격 접속
+> 확장 설치: Extension > Remote - SSH 설치  
+> 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭  
+> SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력
     
