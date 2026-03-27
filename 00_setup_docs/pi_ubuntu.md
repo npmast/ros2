@@ -100,7 +100,8 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > pipx install jupyterlab                                                          // jupyterlab 설치
 > jupyter lab
 > ```
-> * 가상환경 생성 및 등록(가상환경별 실행)
+> * 가상환경 생성 및 등록(가상환경별 실행)  
+> 가상환경에서는 pip 사용을 한다.
 > ```c
 > mkdir -p ~/venvs
 > python3 -m vnev ~/venvs/{ros2:가상환경 명}                                        // 가상환경 생성
