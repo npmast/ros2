@@ -94,8 +94,10 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > * jupyter lab 설치
 > ```c
 > sudo apt update
-> sudo apt install -y python3-pip                                                    // pip 설치
-> pip3 install japyterlab
+> sudo apt install -y python3-venv python3-pip pipx
+> pipx ensurepath                                                                  // 사용자 PATH에 자동 연결
+> source ~/.bashrc                                                                 // 현재 터미널 적용
+> pipx install jupyterlab                                                          // jupyterlab 설치
 > jupyter lab
 > ```
 > * 가상환경 생성 및 등록
@@ -122,4 +124,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > 확장 설치: Extension > Remote - SSH 설치  
 > 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭  
 > SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력
+> EXTENSIONS: Python 설치
+> 작업 폴더 지정: File > Open Folder
+> 터미널 열기: ctrl + `
     
