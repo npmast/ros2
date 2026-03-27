@@ -100,18 +100,32 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > pipx install jupyterlab                                                          // jupyterlab 설치
 > jupyter lab
 > ```
-> * 가상환경 생성 및 등록
+> * 가상환경 생성 및 등록(가상환경별 실행)
 > ```c
-> python3 -m vnev {가상환경 명}                                                      // 가상환경 생성
-> pip install ipykernel                                                              // ipykernel 설치
-> python3 -m ipykernel install --user --name {가상환경} --display-name {커널이름}    // 커널등록
+> mkdir -p ~/venvs
+> python3 -m vnev ~/venvs/{ros2:가상환경 명}                                        // 가상환경 생성
+> source ~/venvs/ros2/bin/activate                                                  // 활성화
+> python -m pip install --upgrade pip
+> python -m pip install ipykernel                                                   // ipykernel 패키지 설치
+> python -m ipykernel install --user --name {ros2:가상환경} --display-name {"Python(ros2)": 커널이름}    // 커널등록
 > jupyter kernelspec list                                                            // 커널 확인
 > 
 > jupyter kernelspec uninstall {커널이름}                                            // 커널 삭제
+> deactivate                                                                         // 비활성화
 > ```
 > 커널들이 저장되는 위치: /home/사용자/.local/share/jupyter/kernels/{커널이름}  
-> 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하면
+> 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하여 생성하
 > 시스템에 이미 설치된 파이션 패키지를 가상환경 내에서 사용할 수 있게 허용하는 옵션이다.
+> * 외부접속 허용
+> ```c
+> jupyter lab --generate-config                  // 설정 파일 생성
+> nano ~/.jupyter/jupyter_lab_config.py          // 설정 파일 열어 추가한다.
+> c.ServerApp.ip = '0.0.0.0'                      // 모든 IP 허용
+> c.ServerApp.port = 8888                         // 접속 포트 설정
+> c.ServerApp.open_brower = False                  // 브라우저 자동 실행 비활성
+> jupyter lab                                      // 실행
+> ```  
+> 서버ip:8888 로 접속
 #### 4. VSCode
 > code.visualstdio.com/Download > Arm64 다운로드
 > ```c
@@ -120,11 +134,11 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > code                    // 실행
 > Extensions > python     // 설치
 > ```
-> * VS Code 원격 접속
-> 확장 설치: Extension > Remote - SSH 설치  
-> 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭  
-> SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력
-> EXTENSIONS: Python 설치
-> 작업 폴더 지정: File > Open Folder
-> 터미널 열기: ctrl + `
+> * VS Code 원격 접속  
+> 확장 설치: Extension > Remote - SSH 설치    
+> 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭    
+> SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력  
+> EXTENSIONS: Python 설치  
+> 작업 폴더 지정: File > Open Folder  
+> 터미널 열기: ctrl + `  
     
