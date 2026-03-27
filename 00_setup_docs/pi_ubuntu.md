@@ -135,7 +135,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > code                    // 실행
 > Extensions > python     // 설치
 > ```
-> * VS Code 원격 접속  
+> * PC VSCode 원격 접속  
 > 확장 설치: Extension > Remote - SSH 설치    
 > 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭    
 > SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력  
