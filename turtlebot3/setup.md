@@ -26,8 +26,9 @@ network:
           - 8.8.8.8
       access-points:
           WiFi이름:
-          password: 비밀번호
+              password: 비밀번호
 ```
+>sudo netplan apply 명령을 실행하여 변경사항 적용
 #### 5. 기타 설정
 * ssh 설정
 >sudo apt update  
