@@ -86,8 +86,11 @@ $ source ~/.bashrc
 >$ sudo cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/  
 $ sudo udevadm control --reload-rules  
 $ sudo udevadm trigger  
-* ROS 도메인 ID 설정  
->$ echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc  
+* ROS DDS 도메인 설정
+>- 현재 설정된 DDS 도메인을 확인한다.  
+>$ echo $ROS_DOMAIN_ID    
+>- DDS 도메인을 30으로 설정한다.(설정 범위: 0 ~ 232)        
+>$ echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc    
 $ source ~/.bashrc
 #### 8. LDS 구성  
 >사용하는 LDS 모델에 따라 다음과 같다.  
