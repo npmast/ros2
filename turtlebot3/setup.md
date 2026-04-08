@@ -1,4 +1,6 @@
-#### 1. 우분투 이미지 받기(22.04 LTS)  
+# TURTLEBOT3  
+### e-Manual
+##### 1. 우분투 이미지 받기(22.04 LTS)  
 >https://cdimage.ubuntu.com/releases/jammy/release/ 접속하여 
 >ubuntu-22.04.5-preinstalled-server-arm64+raspi.img.xz 파일을 다운로드 한다.
 #### 2. 이미지 굽기  
@@ -35,6 +37,62 @@ network:
 * ssh 설정
 >sudo apt update  
 >sudo apt install openssh-server  
->sudo systemctl status ssh
->원격 PC의 cmd 창: ssh 사용자@IP  
- 
+>sudo systemctl status ssh  
+>원격 PC의 cmd 창: ssh 사용자@IP
+* 자동 업데이트 설정
+>$ sudo nano /etc/apt/apt.conf.d/20auto-upgrades 파일을 열어  
+>슷자를 두 개 모두 "0"으로 변경한다.
+* 부팅 지연 방지
+>$ systemctl mask systemd-networkd-wait-online.service
+* 절전 및 최대 절전 모드 비활성화
+>$ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target  
+>$ sudo reboot
+* TurtleBot3 2GB인 경우 패키지 빌드를 위해 스왑 메모리 생성
+>```c
+>$ sudo fallocate -l 2G /swapfile
+>$ sudo chmod 600 /swapfile
+>$ sudo mkswap /swapfile
+>$ sudo swapon /swapfile
+>$ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab    // 스왑파일 자동 활성화
+>$ free -f                                                       // 메모리 확인
+>```
+#### 6. ROS2 설치  
+>ROS2 문서: Humble편에 우분투(deb 패키지)설치를 따라 설치한다.  
+>ROS2 설치는 ROS-Base 설치(최소 기능)으로 설치한다.  
+>개발도구는 설치하지 않는다.
+>몇 가지 예를 들어보세요는 서버용은 실행되지 않는다.
+#### 7. 패키지 설치하기
+>시간이 오래 소요된다. 하나씩 천천히 따라한다.  
+* ROS 패키지 설치하기  
+>$ sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential  
+$ sudo apt install ros-humble-hls-lfcd-lds-driver  
+$ sudo apt install ros-humble-turtlebot3-msgs  
+$ sudo apt install ros-humble-dynamixel-sdk  
+$ sudo apt install ros-humble-xacro  
+$ sudo apt install libudev-dev  
+$ mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src  
+$ git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git  
+$ git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git  
+$ git clone -b humble https://github.com/ROBOTIS-GIT/coin_d4_driver  
+$ cd ~/turtlebot3_ws/src/turtlebot3  
+$ rm -r turtlebot3_cartographer turtlebot3_navigation2  
+$ cd ~/turtlebot3_ws/  
+$ echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc  
+$ source ~/.bashrc  
+$ colcon build --symlink-install --parallel-workers 1  
+$ echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
+$ source ~/.bashrc
+* OpenCR용 USB 포트 설정  
+>$ sudo cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/  
+$ sudo udevadm control --reload-rules  
+$ sudo udevadm trigger  
+* ROS 도메인 ID 설정  
+>$ echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc  
+$ source ~/.bashrc
+#### 8. LDS 구성  
+>사용하는 LDS 모델에 따라 다음과 같다.  
+>$ echo 'export LDS_MODEL=LDS-01' >> ~/.bashrc # If you are using LDS-01  
+$ echo 'export LDS_MODEL=LDS-02' >> ~/.bashrc # If you are using LDS-02  
+$ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03  
+>$ source ~/.bashrc
+  
