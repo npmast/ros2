@@ -2,7 +2,8 @@
 >https://cdimage.ubuntu.com/releases/jammy/release/ 접속하여 
 >ubuntu-22.04.5-preinstalled-server-arm64+raspi.img.xz 파일을 다운로드 한다.
 #### 2. 이미지 굽기  
->Raspberry Pi Imager  
+>Raspberry Pi Imager
+>hostname: 장치에 부여하는 이름  
 #### 3. 설정하기  
 >부팅하면 나타나는 사용자와 비밀번호는 ubuntu 이다. 입력하면 새 비밀번호를 설정할 수 있다.
 #### 4. 인터넷 설정하기(무선 고정 IP)
@@ -12,10 +13,8 @@
 sudo nano /etc/netplan/50-cloud-init.yaml
 network:
   version: 2
-  renderer: networkd
   wifis:
     wlan0:
-      dhcp4: no
       addresses:
         - 192.168.0.110/24
       routes:
@@ -27,6 +26,9 @@ network:
       access-points:
           WiFi이름:
               password: 비밀번호
+      dhcp4: true
+      optional: true
+      regulatory-domain: KR
 ```
 >sudo netplan apply 명령을 실행하여 변경사항 적용
 #### 5. 기타 설정
@@ -34,5 +36,5 @@ network:
 >sudo apt update  
 >sudo apt install openssh-server  
 >sudo systemctl status ssh
->원격 PC의 cmd 창에서 ssh 사용자@IP 명령어로 접속한다.  
+>원격 PC의 cmd 창: ssh 사용자@IP  
  
