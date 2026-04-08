@@ -81,7 +81,10 @@ $ echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 $ source ~/.bashrc  
 $ colcon build --symlink-install --parallel-workers 1  
 $ echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
-$ source ~/.bashrc
+$ source ~/.bashrc  
++업데이트 후 마이크로코드의 최신 여부에 대한 안내 문구가 출력되면 다음 파일을 열고     
+$ sudo nano /etc/needrestart/needrestart.conf  
+&nbsp;&nbsp;#$nrconf{ucodehints} = 0; 줄의 주석을 제거한다.  
 * OpenCR용 USB 포트 설정  
 >$ sudo cp `ros2 pkg prefix turtlebot3_bringup`/share/turtlebot3_bringup/script/99-turtlebot3-cdc.rules /etc/udev/rules.d/  
 $ sudo udevadm control --reload-rules  
