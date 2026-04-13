@@ -34,6 +34,13 @@ network:
       regulatory-domain: KR
 ```
 >sudo netplan apply 명령을 실행하여 변경사항 적용
+#### * 원격PC 네트워크 설정(VMware): TURTLEBOT3와 VMWare의 네트워크를 동일하게 맞춘다.
+1. bridge mode 설정
+  Edit > Virtual Network Editor > 하단의 Change Setting > VMnet0 (Bridbe) 선택
+  Bridge to 항목에서 Automatic 대신 연결된 실제 컴퓨터의 랜카드 선택 > Apply 및 OK
+2. 가상 머신 네트워크 어댑터 설정(VM Settings)
+  VM > Setting > HardWare에서 Network Adapter > Network connection에 Bridged~ 와 Replicate~ 선택사항 선택 > OK
+3. 가상 머신 재부팅 > 터미널에서 ip a 로 ip를 확인한다.(VM과 SBC가 동일한 네트워크로 잡혀있어야 한다.)
 #### 5. 기타 설정
 * ssh 설정
 >sudo apt update  
