@@ -34,13 +34,6 @@ network:
       regulatory-domain: KR
 ```
 >sudo netplan apply 명령을 실행하여 변경사항 적용
-#### * 원격PC 네트워크 설정(VMware): TURTLEBOT3와 VMWare의 네트워크를 동일하게 맞춘다.
-1. bridge mode 설정
-  Edit > Virtual Network Editor > 하단의 Change Setting > VMnet0 (Bridbe) 선택
-  Bridge to 항목에서 Automatic 대신 연결된 실제 컴퓨터의 랜카드 선택 > Apply 및 OK
-2. 가상 머신 네트워크 어댑터 설정(VM Settings)
-  VM > Setting > HardWare에서 Network Adapter > Network connection에 Bridged~ 와 Replicate~ 선택사항 선택 > OK
-3. 가상 머신 재부팅 > 터미널에서 ip a 로 ip를 확인한다.(VM과 SBC가 동일한 네트워크로 잡혀있어야 한다.)
 #### 5. 기타 설정
 * ssh 설정
 >sudo apt update  
@@ -64,12 +57,12 @@ network:
 >$ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab    // 스왑파일 자동 활성화
 >$ free -f                                                       // 메모리 확인
 >```
-#### 6. ROS2 설치  
+#### 6. ROS2 설치: 원격 PC와 SBC 둘 다 설치
 >ROS2 문서: Humble편에 우분투(deb 패키지)설치를 따라 설치한다.  
 >ROS2 설치는 ROS-Base 설치(최소 기능)으로 설치한다.  
 >개발도구는 설치하지 않는다.
 >몇 가지 예를 들어보세요는 서버용은 실행되지 않는다.
-#### 7. 패키지 설치하기
+#### 7. 패키지 설치 및 환경 구성
 >시간이 오래 소요된다. 하나씩 천천히 따라한다.  
 * ROS 패키지 설치하기  
 >$ sudo apt install python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential  
@@ -109,7 +102,22 @@ $ source ~/.bashrc
 $ echo 'export LDS_MODEL=LDS-02' >> ~/.bashrc # If you are using LDS-02  
 $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03  
 >$ source ~/.bashrc
-
+#### * 원격PC 네트워크 설정(VMware): TURTLEBOT3와 VMWare의 네트워크를 동일하게 맞춘다.
+1. bridge mode 설정
+  Edit > Virtual Network Editor > 하단의 Change Setting > VMnet0 (Bridbe) 선택
+  Bridge to 항목에서 Automatic 대신 연결된 실제 컴퓨터의 랜카드 선택 > Apply 및 OK
+2. 가상 머신 네트워크 어댑터 설정(VM Settings)
+  VM > Setting > HardWare에서 Network Adapter > Network connection에 Bridged~ 와 Replicate~ 선택사항 선택 > OK
+3. 가상 머신 재부팅 > 터미널에서 ip a 로 ip를 확인한다.(VM과 SBC가 동일한 네트워크로 잡혀있어야 한다.)
+4. 확인  
+   $ echo $ROS_DIMAIN_ID  
+   $ echo $ROS_LOCALHOST_ONLY          // 반드시 0이 나와야 한다.  
+   * TurtleBot3 에서 실행                      // bringup 실행  
+   $ ros2 launch turtlebot3_bringup robot.launch.py  
+   * 원격 PC 에서 Topic 확인  
+   $ ros2 topic list  
+   $ ros2 topic echo /scan              // topic 데이터 확인(LiDAR)  
+   $ ros2 topic info /scan              // topic 타입 확인
 ### 2. OpenCR 설정
 #### 1. 패키지 설치
 >$ sudo dpkg --add-architecture armhf  
