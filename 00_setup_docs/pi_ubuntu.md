@@ -1,14 +1,27 @@
 # UBUNTU  
-
-raspberryPi5 에 ubuntu 설치하기  
 ### ubuntu 버전  
 ROS2 jazzy Jalisco 는 Ubuntu 24.04 LTS 버전을 공식적으로 지원하며, 이 환경에서 설치 및 동작하도록 설계되었다.
 2024 년 5월에 릴리스된 Jazzy 는 Ubuntu 24.04 기반의 장기 지원(LTS) 버전으로 2029 년까지 업데이트가 제공되는 최신 추천 버전이다.  
-Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치한다.  
-
+Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치한다. 
+## 원격 PC에 ubuntu 설치하기
+#### 1. VMWare 를 다운 받는다.
+  VMWare가 브로드컴에 인수된 후 무료로 제공하고 있다. 다운로드를 위해서는 회원가입이 필수이다.  
+  broadcom.com 접속 > 오른쪽 상단 Support Portal > Register 클릭하여 진행한다.  
+  회원가입 후 Go To Portal 클릭 로그인 > Software > VMWare Cloud Foundation > My Downloads을 진행하여 다운로드 받는다.  
+  (다소 까다로움)
+#### 2. ubuntu 설치하기
+  ubuntu.com 접속 > 오른쪽 상단 Menu > Download Ubuntu > Desktop 클릭
+#### 3. 환경 설정하기(24.04)
+  * Open VM Tools 설치  
+    sudo atp update && sudo apt install open-vm-tools-desktop
+  * Teminator 설치  
+    sudo apt install terminator
+    터미널창에서 우클릭 > Preferences 클릭하면 터미널 환경을 설정할 수 있다.
+  
+## raspberryPi5 에 ubuntu 설치하기  
 #### 1. ssh 연결
   a. Monitor 연결하고 Pi에 전원을 공급한다.  
-> 첫 화면이 켜지면 인터넷을 활성화시켜고 접속 IP 을 확인한다.(ip addr or hsotname -I)    
+> 첫 화면이 켜지면 인터넷을 활성화시켜고 접속 IP 을 확인한다.(ip a or hsotname -I)    
 > 터미널을 열어 update 와 ssh server 를 설치한다.
   ```c
   sudo apt update
@@ -43,7 +56,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > * 설정
 > ```c
 > sudo nano /etc/gdm3/custom.conf 파일을 연다.
-> #WaylandEnable=false   // 8행 주석 제거
+> #WaylandEnable=false   // 7행 주석 제거
 > ```
 > * xorg 가상 비디오 드라이버 설치
 > ```c
@@ -94,39 +107,47 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > * jupyter lab 설치
 > ```c
 > sudo apt update
-> sudo apt install -y python3-venv python3-pip pipx
-> pipx ensurepath                                                                  // 사용자 PATH에 자동 연결
-> source ~/.bashrc                                                                 // 현재 터미널 적용
-> pipx install jupyterlab                                                          // jupyterlab 설치
+> //sudo apt install -y python3-venv python3-pip pipx
+> //pipx ensurepath                                                                  // 사용자 PATH에 자동 연결
+> //source ~/.bashrc                                                                 // 현재 터미널 적용
+> //pipx install jupyterlab                                                          // jupyterlab 설치
+> python3 -m pip config set global.break-system-packages true                        // pip 전역 사용 설정
+> sudo apt install jupyter-core                                                      // 핵심 패키지 설치  
+> pip3 install jupyterlab                                                            // jupyterlab 설치
+> sudo reboot                                                                        
 > jupyter lab
 > ```
 > * 가상환경 생성 및 등록(가상환경별 실행)  
 > 가상환경에서는 pip 사용을 한다.
 > ```c
 > mkdir -p ~/venvs
-> python3 -m vnev ~/venvs/{ros2:가상환경 명}                                        // 가상환경 생성
+> python3 -m venv ~/venvs/{ros2:가상환경 명}                                        // 가상환경 생성
 > source ~/venvs/ros2/bin/activate                                                  // 활성화
-> python -m pip install --upgrade pip
+> python -m pip install --upgrade pip여
 > python -m pip install ipykernel                                                   // ipykernel 패키지 설치
-> python -m ipykernel install --user --name {ros2:가상환경} --display-name {"Python(ros2)": 커널이름}    // 커널등록
+> python -m ipykernel install --user --name {ros2:가상환경} --display-name {"Python\(ros2\)": 커널이름} // 커널등록
 > jupyter kernelspec list                                                            // 커널 확인
 > 
 > jupyter kernelspec uninstall {커널이름}                                            // 커널 삭제
 > deactivate                                                                         // 비활성화
 > ```
 > 커널들이 저장되는 위치: /home/사용자/.local/share/jupyter/kernels/{커널이름}  
-> 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하여 생성하
+> * 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하여 생성하
 > 시스템에 이미 설치된 파이션 패키지를 가상환경 내에서 사용할 수 있게 허용하는 옵션이다.
 > * 외부접속 허용
 > ```c
 > jupyter lab --generate-config                  // 설정 파일 생성
 > nano ~/.jupyter/jupyter_lab_config.py          // 설정 파일 열어 추가한다.
-> c.ServerApp.ip = '0.0.0.0'                      // 모든 IP 허용
-> c.ServerApp.port = 8888                         // 접속 포트 설정
-> c.ServerApp.open_brower = False                  // 브라우저 자동 실행 비활성
-> jupyter lab                                      // 실행
+> c.ServerApp.ip = '0.0.0.0'                      // 모든 IP 허용(922)
+> c.ServerApp.port = 8888                         // 접속 포트 설정(1038)
+> c.ServerApp.open_browser = False                // 브라우저 자동 실행 비활성(1026)
+> jupyter lab                                     // 실행
+> 
 > ```  
-> 서버ip:8888 로 접속
+* PC 에서 서버ip:8888 로 접속  
+  첫 화면에서 비밀번호 입력 및 생성이 나오는데 토큰을 넣어야 비밀번호 생성이 가능하다.  
+  서버 터미널에서 다음 명령을 사용하여 알 수 있다.  
+  $ jupyter server list 
 #### 4. VSCode
 > code.visualstdio.com/Download > Arm64 다운로드
 > ```c
