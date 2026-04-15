@@ -29,14 +29,16 @@ $ cd ~/ros2_ws/src
   - setup.py: 패키지가 설치하는 방법을 설명하는 파일
 ##### 패키지 생성
 * CMake  
-  $ ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
+  $ ros2 pkg create --build-type ament_cmake --node-name my_node my_package  
 * Python  
-  $ ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name my_node my_package
+  $ ros2 pkg create --build-type ament_python --node-name my_node my_package  
 src 디렉터리 내에 my_package 폴더가 생성된다.
 ### 3. 패키지 빌드  
 $ cd ~/ros2_ws  
 $ colcon build  
 $ colcon build --package-select my_package &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// my_package 패키지만 빌드  
+$ sudo apt install tree  
+$ tree          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 폴더 구조를 확인한다.
 ### 4. 패키지 사용  
 $ source install/local_setup.bash  
 $ ros2 run my_package my_node
