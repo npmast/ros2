@@ -3,11 +3,11 @@
 ROS2 jazzy Jalisco 는 Ubuntu 24.04 LTS 버전을 공식적으로 지원하며, 이 환경에서 설치 및 동작하도록 설계되었다.
 2024 년 5월에 릴리스된 Jazzy 는 Ubuntu 24.04 기반의 장기 지원(LTS) 버전으로 2029 년까지 업데이트가 제공되는 최신 추천 버전이다.  
 Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치한다. 
-## 원격 PC에 ubuntu 설치하기
+## + 원격 PC에 ubuntu 설치하기
 #### 1. VMWare 를 다운 받는다.
   VMWare가 브로드컴에 인수된 후 무료로 제공하고 있다. 다운로드를 위해서는 회원가입이 필수이다.  
   broadcom.com 접속 > 오른쪽 상단 Support Portal > Register 클릭하여 진행한다.  
-  회원가입 후 Go To Portal 클릭 로그인 > Software > VMWare Cloud Foundation > My Downloads을 진행하여    다운로드 받는다.  (다소 까다로움)
+  회원가입 후 Go To Portal 클릭 로그인 > Software > VMWare Cloud Foundation > My Downloads을 진행하여 다운로드 받는다.  (다소 까다로움)
 #### 2. ubuntu 설치하기
   ubuntu.com 접속 > 오른쪽 상단 Menu > Download Ubuntu > Desktop 클릭
 #### 3. 환경 설정하기(24.04)
@@ -20,7 +20,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
     sudo apt install terminator
     터미널창에서 우클릭 > Preferences 클릭하면 터미널 환경을 설정할 수 있다.
   
-## raspberryPi5 에 ubuntu 설치하기  
+## + raspberryPi5 에 ubuntu 설치하기  
 #### 1. ssh 연결
   a. Monitor 연결하고 Pi에 전원을 공급한다.  
 > 첫 화면이 켜지면 인터넷을 활성화시켜고 접속 IP 을 확인한다.(ip a or hsotname -I)    
