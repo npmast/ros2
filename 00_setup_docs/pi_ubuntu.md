@@ -7,12 +7,14 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 #### 1. VMWare 를 다운 받는다.
   VMWare가 브로드컴에 인수된 후 무료로 제공하고 있다. 다운로드를 위해서는 회원가입이 필수이다.  
   broadcom.com 접속 > 오른쪽 상단 Support Portal > Register 클릭하여 진행한다.  
-  회원가입 후 Go To Portal 클릭 로그인 > Software > VMWare Cloud Foundation > My Downloads을 진행하여 다운로드 받는다.  
-  (다소 까다로움)
+  회원가입 후 Go To Portal 클릭 로그인 > Software > VMWare Cloud Foundation > My Downloads을 진행하여    다운로드 받는다.  (다소 까다로움)
 #### 2. ubuntu 설치하기
   ubuntu.com 접속 > 오른쪽 상단 Menu > Download Ubuntu > Desktop 클릭
 #### 3. 환경 설정하기(24.04)
-  * Open VM Tools 설치  
+  * bridged mode
+    Edit > Virtual Network Editer > Change Settings > bridged > bridged to: 현재 랜카드 설정 > OK
+    VM > Setting > Network Adgpter > bridged 로 설정
+  * Open VM Tools 설치 - 화면 크기 조절    
     sudo atp update && sudo apt install open-vm-tools-desktop
   * Teminator 설치  
     sudo apt install terminator
@@ -156,7 +158,8 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > code                    // 실행
 > Extensions > python     // 설치
 > ```
-> * PC VSCode 원격 접속  
+> * PC VSCode 원격 접속
+> PC에 python이 설치되어 있어야 한다.(python.org)
 > 확장 설치: Extension > Remote - SSH 설치    
 > 원격 연결: 좌측 하단 >< 버튼(Open a Remote Window) 클릭    
 > SSH 연결: "Connect to Host... > +Add New SSH Host.. > ssh 사용자@IP주소 > 비밀번호 입력  
