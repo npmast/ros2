@@ -71,4 +71,8 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > $ nano /.bashrc  
 > alias domain="export ROS_DIMAIN_ID=10; echo \"ROS_DOMAIN_ID=10\""  
 > alias jazzy="source /opt/ros/jazzy/setup.bash; domain; echo \"ROS jazzy is now active.\""  
+저장하고 빠져나온다.  
 > $ source ~/.bashrc  
+> $ jazzy  
+> ROS_DOMAIN_ID=10  
+> ROS2 jazzy is now active.    
