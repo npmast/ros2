@@ -26,8 +26,10 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > 첫 화면이 켜지면 인터넷을 활성화시켜고 접속 IP 을 확인한다.(ip a or hsotname -I)    
 > 터미널을 열어 update 와 ssh server 를 설치한다.
   ```c
-  sudo apt update
-  sudo apt install openssh-server
+ $ sudo apt update
+ $ sudo apt install openssh-server
+ $ systemctl status ssh
+ $ ip a
   ```
   b. 설치가 완료되면 HDMI 케이블을 제거하고 재부팅한다.  
 > PC에서 명령프롬프트를 실행하고 ssh 접속 명령을 실행한다.  
