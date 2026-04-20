@@ -56,7 +56,7 @@ if __name__ == '__main__':
 ##### 6. 실행 등록  
 $ cd ~/ros2_ws/src/robot>control  
 $ nano setup.py  
-아래 부분에서 찾아서 수정한다.  
+entry_points 부분 찾아서 수정한다.  
 ```py
 entry_points={
     'console_scripts': [
