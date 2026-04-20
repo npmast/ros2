@@ -33,9 +33,10 @@
 > sudo apt upgrade
 > sudo apt insall ros-jazzy-desktop
 > ```
-#### bash 환경 적용
+#### bash 환경 적용 및 버전 확인
 > ```c
 > source /opt/ros/jazzy/setup.bash
+> echo $ROS_DISTRO
 > ```
 ##### 예제 실행
 터미널에서 C++ talker 실행
@@ -44,7 +45,7 @@
 > ros2 run demo_nodes_cpp talker
 > ```
 다른 터미널에서 Python listener 실행
-> ```cRO
+> ```c
 > source /opt/ros/jazzy/setup.bash
 > ros2 run demo_nodes_py listener
 > ```
