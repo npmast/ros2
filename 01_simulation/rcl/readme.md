@@ -45,6 +45,7 @@ src 디렉터리 내에 my_package 폴더가 생성된다.
 $ cd ~/ros2_ws  
 $ colcon build  
 $ colcon build --package-select my_package &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// my_package 패키지만 빌드  
+build install log 파일이 만들어 진다.
 $ sudo apt install tree  
 $ tree          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 폴더 구조를 확인한다.
 ### 4. 패키지 사용  
