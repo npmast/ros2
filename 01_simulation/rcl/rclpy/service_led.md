@@ -12,8 +12,6 @@ my_robot_interfaces/
 * SetLed.srv 파일 생성
 ```py
 $ mkdir ~/ros2_ws/src/my_robot_interfaces/srv
-$ mv ~/ros2_ws/src/arduino_led_bridge/srv/SetLed.srv \
-    ~/ros2_ws/src/my_robot_interfaces/srv/
 $ nano ~/ros2_ws/src/my_robot_interfaces/srv/SetLed.srv
 bool on
 ---
@@ -25,10 +23,14 @@ string message
 ##### 2. package.xml 수정  
 기존 <depend> 아래에 수정
 ```c
+$ cd ~/ros2_ws/src/my_robot_interfaces
 $ nano package.xml
+<buildtool_depend>ament_cmake</build_depend> -----
+
 <build_depend>rosidl_default_generators</build_depend>
 <exec_depend>rosidl_default_runtime</exec_depend>
 <member_of_group>rosidl_interface_packages</member_of_group>
+<test>depend>ament_lint_auto</test_depend> -----------------
 ```
 ##### 3. CMakeLists.txt 수정
 ```c
@@ -48,6 +50,7 @@ if(BUILLE_TESTING)
 ##### 4. 빌드
 ```c
 $ cd ~/ros2_ws
+$ rm -fr build install log     // 빌드 캐시 삭
 $ colcon build
 $ source install/setup.bash
 확인
