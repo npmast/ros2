@@ -63,6 +63,8 @@ $ python -m pip install pyserial
 $ python -c "import serial; print(serial.__version__)"
 ```
 ##### 4. subscriber 노드 작성  
+$ cd ~/ros2_ws/src/arduino_led_bridge/arduino_led_bridge  
+$ led_serial_subscriber.py
 ```py
 import rclpy
 from rclpy.node import Node
