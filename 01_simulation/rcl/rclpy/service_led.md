@@ -15,7 +15,7 @@ my_robot_interfaces/
 ```py
 $ mkdir ~/ros2_ws/src/my_robot_interfaces/srv
 $ nano ~/ros2_ws/src/my_robot_interfaces/srv/SetLed.srv
-bool on
+bool on              // bool 타입의 변수 on
 ---
 bool success
 string message
@@ -177,14 +177,14 @@ $ source install/setup.bash
 $ ros2 run arduino_led_bridge led_service_node
 Serial connected
 LED Service Node Ready
-
-* 터미널 2: 서비스 호출
-  LED 켜기
-```c
-$ ros2 service call /set_led arduino_led_bridge/srv/SetLed "{on: true}"
 ```
-  LED 끄기
+* 터미널 2: 서비스 호출  
 ```c
+- LED ON  service 호출
+$ ros2 service type /set_led
+$ ros2 interface show my_robot_interfaces/srv/SetLed  
+$ ros2 service call /set_led arduino_led_bridge/srv/SetLed "{on: true}"
+- LED OFF service 호출
 $ ros2 service call /set_led arduino_led_bridge/srv/SetLed "{on: false}"
 ```
 ##### 8. 상태 확인
