@@ -165,6 +165,11 @@ $ source install/setup.bash
 ##### 7. port 확인  
 ```c
 $  ls /dev/ttyACM* or ls /dev/ttyUSB*
+권한 문제로 에러가 뜨면
+$ sudo usermod -a -G dialout $USER
+$ newgrp dialout
+$ groups
+$ ls -l /dev/ttyACM0
 ```
 ##### 8. 실행  
   * 터미널 1: ROS2 subscriber 실행
@@ -175,8 +180,12 @@ $ ros2 run arduino_led_bridge led_serial_subscriber
 ```
   * 터미널 2: 토픽 발행
 ```c
-LED ON
+cd ~/ros2_ws
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
+source .venv/bin/activate
+* LED ON 명령 실행
 ros2 topic pub /led_cmd std_msgs/msg/String "{data: 'on'}" --once
-LED OFF
+* LED OFF 명령 실행
 ros2 topic pub /led_cmd std_msgs/msg/String "{data: 'off'}" --once
 ```
