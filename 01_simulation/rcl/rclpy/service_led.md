@@ -1,7 +1,9 @@
 ## Service  
 ##### 1. 인터페이스 정의 (srv 생성)   
-* srv 폴더 생성
-* srv 파일: srv 폴더에 위치하며 서비스의 요청과 응답 데이터 구조를 정의하는 텍스트 파일로 -- 기준으로 구분한다.
+* .srv, .msg, .action은 CMake 기반으로 생성된다.  
+  인터페이스를 사용하면 srv 가 필요하다.  
+* srv 폴더와 srv 파일: srv 폴더에 위치하며 서비스의 요청과 응답 데이터 구조를 정의하는 텍스트 파일로 -- 기준으로 구분한다.  
+* 인터페이스 패키지 생성
 ```py
 $ cd ~/ros2_ws/src
 $ ros2 pkg create my_robot_interfaces --build-type ament_cmake
@@ -67,7 +69,7 @@ from std_msgs.msg import Bool
 import serial
 import time
 
-from arduino_led_bridge.srv import SetLed
+from my_robot_interfaces.srv import SetLed
 
 
 class LedServiceNode(Node):
@@ -151,6 +153,7 @@ if __name__ == '__main__':
     main()
 ```
 ##### 6. setup.py 수정
+$ nano ~/ros2_ws/src/arduino_led_bridge/setup.py
 ```c
 entry_points={
     'console_scripts': [
