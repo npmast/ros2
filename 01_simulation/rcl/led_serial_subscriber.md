@@ -165,7 +165,7 @@ $ source install/setup.bash
 ##### 7. port 확인  
 ```c
 $  ls /dev/ttyACM* or ls /dev/ttyUSB*
-권한 문제로 에러가 뜨면
+* 권한 문제로 에러가 뜨면
 $ sudo usermod -a -G dialout $USER
 $ newgrp dialout
 $ groups
