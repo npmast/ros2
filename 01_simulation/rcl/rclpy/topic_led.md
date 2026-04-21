@@ -55,12 +55,18 @@ arduino_led_bridge/
 └── setup.cfg  
 ##### 3. pyserial 설치  
 ```c
+/*
 $ cd ~/ros2_ws
 $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ python -m pip install --upgrade pip
 $ python -m pip install pyserial
 $ python -c "import serial; print(serial.__version__)"
+*/
+$ sudo apt update
+$ sudo apt install python3-serial
+$ python -c "import serial; print(serial.__version__)"
+3.5      
 ```
 ##### 4. subscriber 노드 작성  
 $ cd ~/ros2_ws/src/arduino_led_bridge/arduino_led_bridge  
