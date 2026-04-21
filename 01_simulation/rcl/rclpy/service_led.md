@@ -1,13 +1,20 @@
-##### 1. 인터페이스 정의  
+## Service  
+##### 1. 인터페이스 정의 (srv 생성)   
 * srv 폴더 생성
+* srv 파일: srv 폴더에 위치하며 서비스의 요청과 응답 데이터 구조를 정의하는 텍스트 파일로 -- 기준으로 구분한다.
 ```py
-cd ~/ros2_ws/src/arduino_led_bridge
-mkdir srv
+$ cd ~/ros2_ws/src
+$ ros2 pkg create my_robot_interfaces --build-type ament_cmake
+my_robot_interfaces/
+ ├── CMakeLists.txt  
+ ├── package.xml
 ```
 * SetLed.srv 파일 생성
 ```py
-touch srv/SetLed.srv
-파일의 내용은 
+$ mkdir ~/ros2_ws/src/my_robot_interfaces/srv
+$ mv ~/ros2_ws/src/arduino_led_bridge/srv/SetLed.srv \
+    ~/ros2_ws/src/my_robot_interfaces/srv/
+$ nano ~/ros2_ws/src/my_robot_interfaces/srv/SetLed.srv
 bool on
 ---
 bool success
@@ -15,15 +22,18 @@ string message
 - 요청: 켜기/끄기
 - 응답: 성공 여부 + 메시지
 ```
-##### 2. package.xml 수정
+##### 2. package.xml 수정  
+기존 <depend> 아래에 수정
 ```c
+$ nano package.xml
 <build_depend>rosidl_default_generators</build_depend>
 <exec_depend>rosidl_default_runtime</exec_depend>
-
 <member_of_group>rosidl_interface_packages</member_of_group>
 ```
 ##### 3. CMakeLists.txt 수정
 ```c
+find_package(ament_cmake REQUIRED)
+--------------------------------------------------------- 수정 기입
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -31,10 +41,22 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 ament_export_dependencies(rosidl_default_runtime)
+----------------------------------------------------------- 여기까
+if(BUILLE_TESTING)
+  find_package(ament_lint_auto REQUIRED)
 ```
-##### 4. Python 서비스 노드 작성
+##### 4. 빌드
 ```c
-$ cd ~/ros2_ws/src/arduino_led_bridge/arduino_led_bridge
+$ cd ~/ros2_ws
+$ colcon build
+$ source install/setup.bash
+확인
+$ ros2 interface list | grep SetLed
+my_robot_interfaces/srv/SetLed
+```
+##### 5. Python 서비스 노드 작성
+```c
+$ cd ~/ros2_ws/src/arduino_led_bridge/arduino_led_bridge/led_service_node.py
 $ nano led_service_node.py
 import rclpy
 from rclpy.node import Node
@@ -125,7 +147,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
-##### 5. setup.py 수정
+##### 6. setup.py 수정
 ```c
 entry_points={
     'console_scripts': [
@@ -133,7 +155,7 @@ entry_points={
     ],
 },
 ```
-##### 6. 빌드
+##### 7. 빌드
 ```c
 $ cd ~/ros2_ws
 $ colcon build
@@ -149,17 +171,17 @@ $ source install/setup.bash
 $ ros2 run arduino_led_bridge led_service_node
 Serial connected
 LED Service Node Ready
-```
+
 * 터미널 2: 서비스 호출
   LED 켜기
-  ```
+```c
 $ ros2 service call /set_led arduino_led_bridge/srv/SetLed "{on: true}"
-  ```
-  LED 끄기
 ```
+  LED 끄기
+```c
 $ ros2 service call /set_led arduino_led_bridge/srv/SetLed "{on: false}"
 ```
 ##### 8. 상태 확인
-```
+```c
 $ ros2 topic echo /led_state
 ```
