@@ -37,7 +37,7 @@ $ nano package.xml
 ##### 3. CMakeLists.txt 수정
 ```c
 find_package(ament_cmake REQUIRED)
---------------------------------------------------------- 수정 기입
+--------------------------------------------------------- 기입
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -45,14 +45,14 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 ament_export_dependencies(rosidl_default_runtime)
------------------------------------------------------------ 여기까
+----------------------------------------------------------- 여기까지  
 if(BUILLE_TESTING)
   find_package(ament_lint_auto REQUIRED)
 ```
 ##### 4. 빌드
 ```c
 $ cd ~/ros2_ws
-$ rm -fr build install log     // 빌드 캐시 삭
+$ rm -fr build install log             // 빌드 캐시 삭제
 $ colcon build
 $ source install/setup.bash
 확인
