@@ -5,6 +5,7 @@
 * srv 폴더와 srv 파일: srv 폴더에 위치하며 서비스의 요청과 응답 데이터 구조를 정의하는 텍스트 파일로 -- 기준으로 구분한다.  
 * 인터페이스 패키지 생성
 ```py
+$ source /opt/ros/jazzy/setup.bash
 $ cd ~/ros2_ws/src
 $ ros2 pkg create my_robot_interfaces --build-type ament_cmake
 my_robot_interfaces/
