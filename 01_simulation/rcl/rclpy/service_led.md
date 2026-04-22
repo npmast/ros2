@@ -172,7 +172,7 @@ $ source install/setup.bash
 * 터미널 1: 서비스 서버 실행
 ```c
 $ cd ~/ros2_ws
-$ source .venv/bin/activate
+// $ source .venv/bin/activate
 $ source /opt/ros/humble/setup.bash
 $ source install/setup.bash
 $ ros2 run arduino_led_bridge led_service_node
