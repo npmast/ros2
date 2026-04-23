@@ -13,29 +13,32 @@ ros2 run turtlesim turtlesim_node
    특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
+   * 인터페이스: msg
    * 실행  
      $ ros2 run turtlesim turtlesim_node  
      다른 터미널을 연다.  
-     $ ros2 node list -t // t: 데이터 타입도 출력한다. v: 구분 정보 출력  
+     $ ros2 node list -t &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// t: 데이터 타입도 출력한다. v: 구분 정보 출력  
      $ ros2 node info /turtlesim
    * 카메라 스트리밍/라이다 포인트 클라우드/ IMU 센서 데이터/로봇 속도  
 3. 서비스(service)
    클라이언트 노드와 서버 노드간에 요청(request)과 응답(response)으로 이루어지는 통신 방식.
-   요청과 응답 메시지에는 데이터 타입이 존재한다.  
+   요청과 응답 메시지에는 데이터 타입이 존재한다.
+   * 인터페이스: srv
    * 실행  
      $ ros2 run turtlesim turtlesim_node  
-     - 새로운 터미널을 연다.  
-     $ ros2 service list                                                  // 서비스 목록 확인. info 를 이용해도 된다.  
-     $ ros2 service type /turtle1/teleport_absolute                                            // 서비스 타입 확인  
-     $ ros2 interface show turtlesim/srv/TeleportAbsolute                                      // 타입 확인  
-     $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"     // 이동  
-     $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"                  // 터틀2 생성  
-     $ ros2 service list           // turtlesim2가 보인다.
+   * 새로운 터미널을 연다.  
+     $ ros2 service list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 서비스 목록 확인. info 를 이용해도 된다.  
+     $ ros2 service type /turtle1/teleport_absolute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 서비스 타입 확인  
+     $ ros2 interface show turtlesim/srv/TeleportAbsolute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 타입 확인  
+     $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 이동  
+     $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 터틀2 생성  
+     $ ros2 service list&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// turtlesim2가 보인다.
      $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
    * 모터 활성화/좌표 변환/파라미터 변경  
 5. 액션(Action)
    토픽과 서비스의 장점을 결합한 통신이다. 클라이언트가 목표를 보내면, 서버는 작업을 수행하면서 중간에 피드백을 전송하고, 완료 시 결과를 반환한다.
-   취소가 가능하며 작업을 안전하게 관리할 수 있다.  
+   취소가 가능하며 작업을 안전하게 관리할 수 있다.
+   * 인터페이스: action
    * 실행
      $ ros2 action list
      $ ros2 action list -t
