@@ -19,7 +19,8 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
   * Teminator 설치  
     sudo apt install terminator
     터미널창에서 우클릭 > Preferences 클릭하면 터미널 환경을 설정할 수 있다.
-  
+  * ssh 설치
+    sudo apt install openssh-server  
 ## + raspberryPi5 에 ubuntu 설치하기  
 #### 1. ssh 연결
   a. Monitor 연결하고 Pi에 전원을 공급한다.  
