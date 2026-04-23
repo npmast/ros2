@@ -56,7 +56,7 @@
 > $ echo &SHELL  
 > $ cp ~/.bashrc ~/.bashrc.backup  
 bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한다.  
-> $ nano ~/.bashrc 
+> $ nano ~/.bashrc   
 > echo "ROS Jazzy is now active."  
 > source /opt/ros/jazzy/setup.bash  
 > $ source ~/.bashrc        // 현재 쉘에 적용하는 명령
