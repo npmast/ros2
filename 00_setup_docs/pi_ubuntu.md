@@ -101,7 +101,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > hdmi_force_hotplug=1
 > hdmi_group=2
 > hdmi_mode=82
-> sudo reboot
+> $ sudo reboot
 > ```
 > * 검은 화면이 나타나면 다음 명령을 실행한다.
 > ```c
