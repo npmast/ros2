@@ -63,16 +63,16 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > sudo nano /etc/gdm3/custom.conf 파일을 연다.
 > #WaylandEnable=false   // 7행 주석 제거
 > ```
-> // * xorg 가상 비디오 드라이버 설치
+ * xorg 가상 비디오 드라이버 설치
 > ```c
 > sudo apt install xserver-xorg-video-dummy xinit
 > ```
 > * sudo nano /etc/X11/xorg.conf 파일을 열어 다음을 복사한다.  
 > ```c
->#Section "Device"        주석처리
->#    Identifier "Configured Video Device"
->#    Driver "dummy"
->#EndSection
+>Section "Device"        주석처리
+>    Identifier "Configured Video Device"
+>    Driver "dummy"
+>EndSection
 >
 >Section "Monitor"
 >    Identifier "Configured Monitor"
