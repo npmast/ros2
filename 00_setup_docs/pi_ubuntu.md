@@ -126,15 +126,15 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > 가상환경에서는 pip 사용을 한다.
 > ```c
 > $ mkdir -p ~/venvs
-> $ python3 -m venv ~/venvs/{ros2:가상환경 명}                                        // 가상환경 생성
-> $ source ~/venvs/ros2/bin/activate                                                  // 활성화
-> $ python -m pip install --upgrade pip여
-> $ python -m pip install ipykernel                                                   // ipykernel 패키지 설치
+> $ python3 -m venv --system-site-packages ~/venvs/{ros2:가상환경 명}          // 가상환경 생성
+> $ source ~/venvs/ros2/bin/activate                                          // 활성화
+> $ python -m pip install --upgrade pip
+> $ python -m pip install ipykernel                                           // ipykernel 패키지 설치
 > $ python -m ipykernel install --user --name {ros2:가상환경} --display-name {"Python\(ros2\)": 커널이름} // 커널등록
-> $ jupyter kernelspec list                                                            // 커널 확인
+> $ jupyter kernelspec list                                                    // 커널 확인
 > 
-> $ jupyter kernelspec uninstall {커널이름}                                            // 커널 삭제
-> $ deactivate                                                                         // 비활성화
+> $ jupyter kernelspec uninstall {커널이름}                                     // 커널 삭제
+> $ deactivate                                                                  // 비활성화
 > ```
 > 커널들이 저장되는 위치: /home/사용자/.local/share/jupyter/kernels/{커널이름}  
 > * 가상환경을 \"python3 -m venv --system-site-packages {가상환경}\" 와 같이 "--system-site-packages" 옵션을 사용하여 생성하
