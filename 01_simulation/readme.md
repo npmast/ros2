@@ -21,7 +21,7 @@ ros2 run turtlesim turtlesim_node
      $ ros2 node info /turtlesim
    * 카메라 스트리밍/라이다 포인트 클라우드/ IMU 센서 데이터/로봇 속도  
 3. 서비스(service)
-   클라이언트 노드와 서버 노드간에 요청(request)과 응답(response)으로 이루어지는 통신 방식.
+   클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
    요청과 응답 메시지에는 데이터 타입이 존재한다.
    * 인터페이스: srv
    * 실행  
