@@ -15,7 +15,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
     Edit > Virtual Network Editer > Change Settings > bridged > bridged to: 현재 랜카드 설정 > OK
     VM > Setting > Network Adgpter > bridged 로 설정
   * Open VM Tools 설치 - 화면 크기 조절    
-    sudo atp update && sudo apt install open-vm-tools-desktop
+    sudo apt update && sudo apt install open-vm-tools-desktop
   * Teminator 설치  
     sudo apt install terminator
     터미널창에서 우클릭 > Preferences 클릭하면 터미널 환경을 설정할 수 있다.
