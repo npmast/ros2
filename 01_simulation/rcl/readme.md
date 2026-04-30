@@ -56,4 +56,7 @@ $ ros2 pkg create test_package --build-type ament_python --dependencies rclpy st
   * --build-type ament_python: 빌드 Python 패키지 타입
   * --dependencies crlpy std_msgs: ROS2 Python 노드와 문자열 메시지 사용
 #### Turtlesim: server 버전인 경우 설치한다.
-$ sudo apt install ros-jazzy-turtlesim
+$ sudo apt install ros-jazzy-turtlesim  
+### 5. ROS2 명령어  
+노드 실행 명령어: ros2 run <packages name> <node name>  
+ex) ros2 run turtlesim turtlesim_node
