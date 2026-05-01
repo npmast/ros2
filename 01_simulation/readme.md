@@ -26,10 +26,11 @@ ros2 run turtlesim turtlesim_node
    클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
    요청과 응답 메시지에는 각 데이터 타입이 존재한다.
    * 인터페이스: srv
-   * 실행  
+   * 실행: *service list - service type - interface show - service call*
 ```c
-   $ ros2 run turtlesim turtlesim_node  
-   - other terminal open 
+   $ ros2 run turtlesim turtlesim_node
+
+   * other terminal open 
    $ ros2 service list                                                // 서비스 목록 확인. info 를 이용해도 된다.  
    $ ros2 service type /turtle1/teleport_absolute                     // 해당 서비스 타입 확인
    turtlesim/srv/TeleportAbsolute
@@ -38,7 +39,15 @@ ros2 run turtlesim turtlesim_node
    float32 y
    float32 theta
    ---  
-   $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"                  // 서비스 콜: 이동  
+   $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"                  // 서비스 콜: 이동
+
+   * reset service
+   $ ros2 service list
+   $ ros2 service type /reset
+   std_srvs/srv/Empty
+   $ ros2 interface show std/srvs/srv/Empty
+   ---
+   $ ros2 service call /reset std_srvs/srv/Empty {}
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // 터틀2 생성  
    $ ros2 service list                                                // turtlesim2가 보인다.
    $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
