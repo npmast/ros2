@@ -16,28 +16,29 @@ ros2 run turtlesim turtlesim_node
    * 인터페이스: msg
    * 실행
 ```c
-   $ ros2 run turtlesim turtlesim_node  
+   $ ros2 run turtlesim turtlesim_node                 // turtlesim 패키지의 turtlesim_node 를 실행한다.
    - other terminal open
-   $ ros2 topic list                                            // -t: 데이터 타입도 출력한다. -v: 구분 정보 출력
-   /prrameter_events
+   $ ros2 topic list                                   // -t: 데이터 타입도 출력한다. -v: 구분 정보 출력
+   /parameter_events
    /rosout
    /turtle1/cmd_vel
    /turtle1/color_sensor
    /turtle2/posero
-   $ ros2 topic type /turtle1/pose
+   $ ros2 topic type /turtle1/pose                     // 해당 토픽의 타입 확인
    turtlesim/msg/Posero
-   $ ros2 topic info /turtle1/pose
+   $ ros2 topic info /turtle1/pose                     // 해당 토픽의 정보 확인
    Type: turtlesim/msg/Pose
    Publicsher count: 1
    Subscription count: 0
-   $ ros2 interface show turtlesim/msg/Pose                           // 실제 데이터 확
+   $ ros2 interface show turtlesim/msg/Pose            // 실제 토픽의 데이터 타입 확인
    float32 x
    float32 y
    float32 theta
 
-   float32 liner_velocity                                                // 속도 성분
+   float32 liner_velocity                               // 속도 성분
    float32 angular_velocity
-   * turtlesim 은 pose 를 발행한다. 터미널에서 구독하기
+   * /turtlesim 노드는 /turtle1/pose 토픽을 발행한다.  
+   터미널에서 구독하기(확인)  
    $ ros2 topic echo /turtle1/pose
    
 ```
