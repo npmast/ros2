@@ -17,6 +17,7 @@ ros2 run turtlesim turtlesim_node
    * 실행
 ```c
    $ ros2 run turtlesim turtlesim_node                 // turtlesim 패키지의 turtlesim_node 를 실행한다.
+
    - other terminal open
    $ ros2 topic list                                   // -t: 데이터 타입도 출력한다. -v: 구분 정보 출력
    /parameter_events
@@ -37,10 +38,33 @@ ros2 run turtlesim turtlesim_node
 
    float32 liner_velocity                               // 속도 성분
    float32 angular_velocity
-   * /turtlesim 노드는 /turtle1/pose 토픽을 발행한다.  
-   터미널에서 구독하기(확인)  
+
+   * /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
    $ ros2 topic echo /turtle1/pose
-   
+```
+
+   * 주행명령을 전달하는 cmd_vel 토픽
+```c
+   $ ros2 topic list -t
+   /turtle1/cmd_vel [geometry_msgs/msg/Twist]
+   $ ros2 interface show geometry_msgs/msg/Twist
+   Vevtor3   linear                                    // 3차원 벡터 리니어
+            float64 x
+            float64 y
+            float64 z
+   Vector3   angular                          // 3차원 벡터 앵귤러(x, y, z 축을 중심으로 한 회전 값)
+            float64 x
+            float64 y
+            float64 z
+   $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"         // 한 번만 실행. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
+   $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 2.0}}"
+   $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 1.8}}"         // 1hz로 계속 실행
+   - 새로운 터미널을 열어 cmd_vel 토픽을 이중으로 발행한다.
+   $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 3.7}}"
+      // 2개의 토픽을 처리한다.
+   - 새로운 터미널을 연다.
+   $ source /opt/ros/jazzy/setup.bash
+   $ rqt                                          // Debug, tf 체크 해제
 ```
    * 카메라 스트리밍/라이다 포인트 클라우드/ IMU 센서 데이터/로봇 속도  
 3. **서비스**(service)
