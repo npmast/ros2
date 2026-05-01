@@ -10,7 +10,7 @@ ros2 run turtlesim turtlesim_node
 #### 노드 통신
 1. **토픽**(Topic) : 기본적인 통신 방식
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
-   특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
+   어떤 노드가 특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
    * 인터페이스: msg
@@ -18,8 +18,28 @@ ros2 run turtlesim turtlesim_node
 ```c
    $ ros2 run turtlesim turtlesim_node  
    - other terminal open
-   $ ros2 node list -t                   // t: 데이터 타입도 출력한다. v: 구분 정보 출력  
-   $ ros2 node info /turtlesim
+   $ ros2 topic list                                            // -t: 데이터 타입도 출력한다. -v: 구분 정보 출력
+   /prrameter_events
+   /rosout
+   /turtle1/cmd_vel
+   /turtle1/color_sensor
+   /turtle2/posero
+   $ ros2 topic type /turtle1/pose
+   turtlesim/msg/Posero
+   $ ros2 topic info /turtle1/pose
+   Type: turtlesim/msg/Pose
+   Publicsher count: 1
+   Subscription count: 0
+   $ ros2 interface show turtlesim/msg/Pose                           // 실제 데이터 확
+   float32 x
+   float32 y
+   float32 theta
+
+   float32 liner_velocity                                                // 속도 성분
+   float32 angular_velocity
+   * turtlesim 은 pose 를 발행한다. 터미널에서 구독하기
+   $ ros2 topic echo /turtle1/pose
+   
 ```
    * 카메라 스트리밍/라이다 포인트 클라우드/ IMU 센서 데이터/로봇 속도  
 3. **서비스**(service)
@@ -48,8 +68,21 @@ ros2 run turtlesim turtlesim_node
    $ ros2 interface show std/srvs/srv/Empty
    ---
    $ ros2 service call /reset std_srvs/srv/Empty {}
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // 터틀2 생성  
-   $ ros2 service list                                                // turtlesim2가 보인다.
+
+   * spawn service
+   $ ros2 service list
+   $ ros2 service type /spawn
+   turtlesim/srv/Spawn
+   $ ros2 interface show turtlesim/srv/Spawn
+   float32 x
+   float32 y
+   float32 theta
+   string name # Optional.
+   ---
+   string nameros
+   - namespace: turtlesim1, turtlesim2
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // turtlesim2 생성  
+   $ ros2 service list                                                                    // turtlesim2가 보인다.
    $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
 ```
    * 모터 활성화/좌표 변환/파라미터 변경  
