@@ -47,7 +47,11 @@ Plugins > Introspection > Node Graph
 $ mkdir -p Work/py
 $ source /opt/ros/jazzyi/setup.bash or jazzy
 $ jupyter lab
+- other terminal
+$ jazzy
+$ ros2 run turtlesim turtlesim_node
+$ ros2 topic list
 ```
 외부에서 접속한다(IP:PORT)  
 rclpy 와 Pose 를 import 하고 실행해 본다.
-<img width="1602" height="1043" alt="Image" src="https://github.com/user-attachments/assets/e9c3ad88-a422-41a8-9f4e-a92bcaa91442" />
+
