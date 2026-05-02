@@ -42,3 +42,8 @@ $ rqt                                      // QThread
 Plugins > Introspection > Node Graph
 ```
 /telep_turtle 노드와 /turtlesim 노드의 통신관계를 보여 준다.
+#### 4. jupyter lab  
+```c
+$ source /opt/ros/jazzyi/setup.bash
+$ jupyter lab
+```
