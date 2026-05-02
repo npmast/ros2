@@ -20,7 +20,26 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
     sudo apt install terminator
     터미널창에서 우클릭 > Preferences 클릭하면 터미널 환경을 설정할 수 있다.
   * ssh 설치
-    sudo apt install openssh-server  
+    sudo apt install openssh-server
+  * venv
+    ```c
+    $ python --version
+    $ pip --version
+    $ sudo apt install python3-pip
+    $ sudo apt install python3.12-venv
+    $ mkdir -p venvs
+    $ cd venvs
+    $ python3 -m venv --system-site-packages .venv
+    $ source .venv/bin/activate
+    $ deactivate
+    ```
+  * juyter lav
+    ```c
+    $ source .venv/bin/activate
+    $ pip install jupyterlab
+    $ jupyter lab --version
+    $ jupyter lab                                  // 실행
+    ```
 ## + raspberryPi5 에 ubuntu 설치하기  
 #### 1. ssh 연결
   a. Monitor 연결하고 Pi에 전원을 공급한다.  
