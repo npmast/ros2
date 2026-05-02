@@ -44,6 +44,9 @@ Plugins > Introspection > Node Graph
 /telep_turtle 노드와 /turtlesim 노드의 통신관계를 보여 준다.
 #### 4. jupyter lab  
 ```c
-$ source /opt/ros/jazzyi/setup.bash
+$ mkdir -p Work/py
+$ source /opt/ros/jazzyi/setup.bash or jazzy
 $ jupyter lab
 ```
+외부에서 접속한다(IP:PORT)  
+<img width="1602" height="1043" alt="Image" src="https://github.com/user-attachments/assets/e9c3ad88-a422-41a8-9f4e-a92bcaa91442" />
