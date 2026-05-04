@@ -14,7 +14,7 @@ $ ros2 topic list
 * rcl 는 ROS2 Client Library  
 * rp.init() 는 초기화로 ROS2 네트워크 통신 환경을 설정한다.  
 * rp.create_node('pose_subscriber') 는 노드 생성  
-* node.create_subscription(Pose, '/turtle1/pose', pose_callback, 10) 은 subscription 노드 생성  
+* node.create_subscription(Pose, '/turtle1/pose', pose_callback, 10) 은 subscription 객체 생성  
 * rp.spin_once(node) 가 DDS 통신, subscriber 이벤트 처리, callback 실행을 수행된다.
 ```c
 $ ros2 node list
