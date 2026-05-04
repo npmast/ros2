@@ -13,9 +13,11 @@ $ source install/setup.bash
 ##### 4. 패키지 생성  
 $ cd src  
 $ ros2 pkg create robot_control --build-type ament_python --dependencies rclpy std_msgs  
+패키지 이름은 robot_control, 빌드 타입은 ament_python 의존성은 rclpy 라이브러리와 표준 데이터 형식으로 설정한다.  
 $ ls  
 성공적으로 실행되면 robot_control 폴더가 생성되고 그 폴더안에  
 package.xml resource robot_control setup.cfg setup.py test 가 만들어 진다.  
+$ ros2_ws/src 폴더에서 tree 실행하면 계층적으로 보여준다.  
 ##### 5. 노드 생성  
 $ cd ~/ros2_ws/src/robot_control/robot_control  
 $ nano led_commander.py
