@@ -24,3 +24,5 @@ float32 theta
 ---
 ```
 <img width="965" height="876" alt="Image" src="https://github.com/user-attachments/assets/3169d44d-f23c-4441-877f-341adda44720" />
+
+* call_async(request): 서비스 요청을 하고 비동기적으로 결과를 받는다.
