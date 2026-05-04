@@ -13,6 +13,7 @@ rclpy 와 Pose 를 import 하고 실행해 본다.
 * rp.create_node('my_node') 는 노드 생성  
 * node.create_subscription(Pose, '/turtle1/pose', pose_callback, 10) 은 subscription 노드 생성  
 * rp.spin_once(node) 가 DDS 통신, subscriber 이벤트 처리, callback 실행을 수행된다.
+  node를 실행한다.
 * 자동완성 설정  
 Settings → Settings Editor → Code Completion  
 Enable autocompletion 체크
