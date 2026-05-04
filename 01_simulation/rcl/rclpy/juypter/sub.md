@@ -1,4 +1,4 @@
-#### subscription.ipynd
+#### subscription.ipynb
 * jupyter lab
 ```c
 $ mkdir -p Work/py
