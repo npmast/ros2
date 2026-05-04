@@ -1,4 +1,4 @@
-##### 서비스 클라이언트  
+##### service_client.ipynb
 * 터미널 1
 ```c
 $ jazzy
@@ -23,3 +23,4 @@ float32 y
 float32 theta
 ---
 ```
+<img width="965" height="876" alt="Image" src="https://github.com/user-attachments/assets/3169d44d-f23c-4441-877f-341adda44720" />
