@@ -19,11 +19,7 @@ void setup() {
 
 void loop() {
   while (Serial.available() > 0) {
-    char c = Serial.read();
-
-    if (c == '\n') {
-      cmd.trim();
-
+    cmd = Serial.readStringUntil('\');
       if (cmd == "ON") {
         digitalWrite(LED_PIN, HIGH);
         Serial.println("LED ON");
@@ -32,11 +28,6 @@ void loop() {
         digitalWrite(LED_PIN, LOW);
         Serial.println("LED OFF");
       }
-
-      cmd = "";
-    } else {
-      cmd += c;
-    }
   }
 }
 ```
