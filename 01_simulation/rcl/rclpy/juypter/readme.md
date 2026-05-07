@@ -3,6 +3,7 @@
 $ jazzy
 $ mkdir -p Work/py
 $ source /opt/ros/jazzyi/setup.bash or jazzy
+$ source ~/venvs/.venv/bin/activate
 $ jupyter lab
 ```
 외부에서 접속한다(IP:PORT)  
