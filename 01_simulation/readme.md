@@ -18,17 +18,17 @@ ros2 run turtlesim turtlesim_node
 ros2 run turtlesim turtle_teleop_key
 ```
 3. 사용자 노드
-   * publisher 노드
-     /turtle1/cmd_vel 에 속도 publish
-   * subscriber 노드
-     /turtle1/pose 구독하여 위치 확인
-   * service client 노드
-     /clear
-     /spawn
-     /kill
-     서비스 호츨
-   * action 노드
-     장거리 이동 같은 제어 가능
+   * publisher 노드  
+     /turtle1/cmd_vel 에 속도 publish  
+   * subscriber 노드  
+     /turtle1/pose 구독하여 위치 확인  
+   * service client 노드  
+     /clear  
+     /spawn  
+     /kill  
+     서비스 호츨  
+   * action 노드  
+     장거리 이동 같은 제어 가능  
 #### 패키지(Package)
 : 노드들과 설정 파일들의 폴더 또는 컨테이너 
 #### 노드 통신
