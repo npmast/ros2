@@ -172,7 +172,12 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 * PC 에서 서버ip:8888 로 접속  
   첫 화면에서 비밀번호 입력 및 생성이 나오는데 토큰을 넣어야 비밀번호 생성이 가능하다.  
   서버 터미널에서 다음 명령을 사용하여 알 수 있다.  
-  $ jupyter server list 
+  $ jupyter server list
+
+  - 비번 재설정
+  $ jupyter lab password
+  Enter passwore;
+  Verify passwore;
 #### 4. VSCode
 > code.visualstdio.com/Download > Arm64 다운로드
 > ```c
