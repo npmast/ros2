@@ -1,9 +1,9 @@
 ### turtlesim  
 #### 개념
-> 1. turtlesim:              ROS2 패키지
-> 2. turtlesim_node:         실행 노드 프로그램
-> 3. /turtlesim:             실행된 노드 이름
-> 4. turtle1:                시뮬레이터 내부 거북이 객체
+> 1. __turtlesim:              ROS2 패키지__
+> 2. __turtlesim_node:         실행 노드 프로그램__
+> 3. __/turtlesim:             실행된 노드 이름__
+> 4. __turtle1:                시뮬레이터 내부 거북이 객체__
 > 5. /turtle1/pose:          turtle1 상태 토픽
 > 6. /turtle1/cmd_vel:       속도 명령 토픽
 > 7. *turtlesim 패키지 안에 있는 turtlesim_node가 실행되면 /turtlesim 노드 생성, turtle1 객체 생성, topic 생성, service 생성*
