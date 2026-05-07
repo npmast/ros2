@@ -52,7 +52,7 @@ ros2 run turtlesim turtle_teleop_key
    $ ros2 run turtlesim turtlesim_node                 // turtlesim 패키지의 turtlesim_node 를 실행한다.
 
    - other terminal open
-   $ ros2 topic list                                   // -t: 데이터 타입도 출력한다. -v: 구분 정보 출력
+   $ ros2 topic list                                   // -t: 서비스 타입도 출력한다. -v: 구분 정보 출력
    /parameter_events
    /rosout
    /turtle1/cmd_vel
@@ -72,7 +72,7 @@ ros2 run turtlesim turtle_teleop_key
    float32 liner_velocity                               // 속도 성분
    float32 angular_velocity
 
-   * /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
+   - /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
    $ ros2 topic echo /turtle1/pose
 ```
 
@@ -122,18 +122,22 @@ ros2 run turtlesim turtle_teleop_key
 ```c
    $ ros2 run turtlesim turtlesim_node
 
-   * other terminal open 
-   $ ros2 service list                                                // 서비스 목록 확인. info 를 이용해도 된다.  
-   $ ros2 service type /turtle1/teleport_absolute                     // 해당 서비스 타입 확인
+   - other terminal open 
+   $ ros2 service list                                           // 서비스 목록 확인. info 를 이용해도 된다.  
+   $ ros2 service type /turtle1/teleport_absolute                // 해당 서비스 타입 확인
    turtlesim/srv/TeleportAbsolute
-   $ ros2 interface show turtlesim/srv/TeleportAbsolute/              // 해당 서비스 타입의 데이터 타입
+   $ ros2 interface show turtlesim/srv/TeleportAbsolute/          // 해당 서비스 타입의 데이터 타입
    float32 x
    float32 y
    float32 theta
-   ---  
-   $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"                  // 서비스 콜: 이동
+   ---
+   - TeleportAbsolute 서비스 콜(순간 이동)
+   $ ros2 service call /turtle1/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"     
+   requester: making request: tur~            // 요청 
 
-   * reset service
+   response:                                  // 응답
+   tur~
+   - reset service
    $ ros2 service list
    $ ros2 service type /reset
    std_srvs/srv/Empty
@@ -141,7 +145,7 @@ ros2 run turtlesim turtle_teleop_key
    ---
    $ ros2 service call /reset std_srvs/srv/Empty {}
 
-   * spawn service
+   - spawn service
    $ ros2 service list
    $ ros2 service type /spawn
    turtlesim/srv/Spawn
