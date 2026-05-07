@@ -2,9 +2,33 @@
 : 연산을 수행하는 최소 단위의 프로세스로 수 많은 노드들의 집합으로 하나의 로봇 시스템이 만들어 진다.  
 즉 로붓 시스템의 구성은 노드들로 이루어진다. 모터 제어 노드, 라이다(LiDAR) 노드, 카메라 노드, 네비게이션 노드, 센서 융합 노드 등이 하나의 기능을 담당하고  서로 필요한 정보를 통신으로 주고 받는다. 노드는 실제 실행 파일이다.  
 * 실행 명령: ros2 run [PKG] [NODE]
+1. turtlesim_node
+   * 거북이 생성  
+   * 이동  
+   * 위치 계산  
+   * 배경 변경 등  
 ```c
 ros2 run turtlesim turtlesim_node
 ```
+2. turtle_teleop_key
+   * 방향키 -> 이동
+   * 회전 가능
+   * /turtle1/cmd_vel 토픽으로 속도 데이터를 publish 한다.
+```c
+ros2 run turtlesim turtle_teleop_key
+```
+3. 사용자 노드
+   * publisher 노드
+     /turtle1/cmd_vel 에 속도 publish
+   * subscriber 노드
+     /turtle1/pose 구독하여 위치 확인
+   * service client 노드
+     /clear
+     /spawn
+     /kill
+     서비스 호츨
+   * action 노드
+     장거리 이동 같은 제어 가능
 #### 패키지(Package)
 : 노드들과 설정 파일들의 폴더 또는 컨테이너 
 #### 노드 통신
@@ -14,6 +38,15 @@ ros2 run turtlesim turtlesim_node
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
    * 인터페이스: msg
+   * 토픽  
+   | 토픽                      | 타입                                | 설명      |  
+   | ------------------------- | ----------------------------------- | --------- |  
+   | `/turtle1/cmd_vel`        | geometry_msgs/msg/Twist             | 속도 명령 |  
+   | `/turtle1/pose`           | turtlesim/msg/Pose                  | 위치 정보 |  
+   | `/turtle1/color_sensor`   | turtlesim/msg/Color                 | 바닥 색상 |  
+   | `/parameter_events`       | rcl_interfaces/msg/ParameterEvent   | 파라미터  |  
+   | `/rosout`                 | rcl_interfaces/msg/Log              | 로그      |  
+
    * 실행
 ```c
    $ ros2 run turtlesim turtlesim_node                 // turtlesim 패키지의 turtlesim_node 를 실행한다.
@@ -71,6 +104,17 @@ ros2 run turtlesim turtlesim_node
    클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
    요청과 응답 메시지에는 각 데이터 타입이 존재한다.
    * 인터페이스: srv
+   * 관련 서비스
+     | 서비스                          |  역할            |  
+     | ------------------------------- | ---------------- |  
+     | `/spawn`                        | 거북이 추가 생성  |  
+     | `/kill`                         | 거북이 삭제      |  
+     | `/clear`                        | 화면 지우기      |  
+     | `/reset`                        | 초기화           |  
+     | `/turtle1/set_pen`              | 펜 설정          |  
+     | `/turtle1/teleport_absolute`    | 순간이동         |  
+     | `/turtle1/teleport_relative`    | 상대 이동        |  
+
    * 실행: *service list - service type - interface show - service call*
 ```c
    $ ros2 run turtlesim turtlesim_node
