@@ -59,7 +59,7 @@ ros2 run turtlesim turtle_teleop_key
    /turtle1/color_sensor
    /turtle2/posero
    $ ros2 topic type /turtle1/pose                     // 해당 토픽의 타입 확인
-   turtlesim/msg/Posero
+   turtlesim/msg/Pose
    $ ros2 topic info /turtle1/pose                     // 해당 토픽의 정보 확인
    Type: turtlesim/msg/Pose
    Publicsher count: 1
@@ -79,8 +79,8 @@ ros2 run turtlesim turtle_teleop_key
    * 주행명령을 전달하는 cmd_vel 토픽
 ```c
    $ ros2 topic list -t
-   /turtle1/cmd_vel [geometry_msgs/msg/Twist]
-   $ ros2 interface show geometry_msgs/msg/Twist
+   /turtle1/cmd_vel [geometry_msgs/msg/Twist]        // Twist는 선속도, 각속도를 표현하는 ROS2 표준 메시
+   $ ros2 interface show geometry_msgs/msg/Twist      // 데이터 타입 확인
    Vevtor3   linear                                    // 3차원 벡터 리니어
             float64 x
             float64 y
@@ -89,12 +89,15 @@ ros2 run turtlesim turtle_teleop_key
             float64 x
             float64 y
             float64 z
-   $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"         // 한 번만 실행. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
+
+   - /turtle1/cmd_vel 토픽에 1번만 발행. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
+   $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"
+   - 앞으로 가면서 회전
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 2.0}}"
-   $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 1.8}}"         // 1hz로 계속 실행
+   - 1hz로 계속 실행
+   $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 1.8}}" 
    - 새로운 터미널을 열어 cmd_vel 토픽을 이중으로 발행한다.
    $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 3.7}}"
-      // 2개의 토픽을 처리한다.
    - 새로운 터미널을 연다.
    $ source /opt/ros/jazzy/setup.bash
    $ rqt                                          // Debug, tf 체크 해제
