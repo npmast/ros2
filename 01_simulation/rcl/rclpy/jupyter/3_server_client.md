@@ -23,7 +23,7 @@ float32 y
 float32 theta
 ---
 ```
-* jupyter
-  1. 
-* future = call_async(request): 비동기 서비스 요청
-  rp.spin_future_complete(node, future)
+* jupyter  
+<img width="754" height="484" alt="Image" src="https://github.com/user-attachments/assets/98744bd4-ff93-4b95-992b-e83dba1a3b8c" />
+
+
