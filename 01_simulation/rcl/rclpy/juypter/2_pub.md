@@ -1,8 +1,58 @@
-#### publisher.ipynb
+#### publisher.ipynb  
+1. 패키지 import
+```py
+import rclpy as rp
+from geometry_msgs.msg import Twist         # 속도
+import time
+```
+2. 초기화
+```pr
+if not rp.ok():
+    rp.init()
+```
+3. Twist 객체 생성
+```py
+msg = Twist()                                 # Twist 객체 생성
+print(msg)                                    # turtlesim1의 속도 정보가 들어있다.
+```
+4. 속도 변경
+```py
+msg.linear.x = 2.5
+msg.angular.z = 2.5
+msg
+```
+5. 노드 생성
+```py
+node = rp.create_node('publisher')            # publisher 이름 속성의 node 생성
+```
+6. 퍼블리셔 객체 생성
+```py
+pub = node.create_publisher(Twist, '/turtle1/cmd_vel', 10)      # 퍼블리셔 객체 생성
+```
+7. 전진/회전/곡선/반복
+```py
+msg.linear.x = 2.0
+msg.angular.z = 0.0
+pub.publish(msg)
+print('Forward')
 
-<img width="1206" height="908" alt="Image" src="https://github.com/user-attachments/assets/cc328921-34de-4d16-8394-6790aeb59e98" />
-<img width="1199" height="689" alt="Image" src="https://github.com/user-attachments/assets/4a7c21cb-7de5-482a-a5fa-d2261db071a4" />  
+msg.linear.x = 2.0
+msg.angular.z = 0.0
+pub.publish(msg)
+print('Forward')
 
+msg.linear.x = 2.0
+msg.angular.z = 1.0
+pub.publish(msg)
+print('Curve')
+
+msg.linear.x = 0.5
+msg.angular.z = 1.0
+for _ in range(10):
+    pub.publish(msg)
+    time.sleep(0.5)
+print('Repeat')
+```
 * node = ROS2 프로세서의 기본 컨테이너  
 * 'publisher': 노드 이름  
 * __생성한 node 안에 publisher 기능을 추가한 객체 pub 생성__    
