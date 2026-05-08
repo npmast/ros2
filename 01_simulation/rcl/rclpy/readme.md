@@ -80,6 +80,8 @@ $ cd ~/ros2_ws
 $ colcon build  
 Starting >>> robot_control  
 Finished <<< robot_control  
+* 이전 빌드 삭제하기  
+$ sudo rm -fr install/ build/ log/  
 ##### 8. 환경 적용 및 실행  
 $ source install/setup.bash  
 $ ros2 run robot_control led_commander   
