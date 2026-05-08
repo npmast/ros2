@@ -4,16 +4,17 @@
 $ mkdir -p ~/ros2_ws/src  
 $ cd ~/ros2_ws
 ```  
-##### 2. 빌드 테스트
+##### 2. 빌드(테스트)
 ```c
+$ cd ~/ros2_ws
 $ colcon build  
 $ ls  
-// build/ install/ log/ 폴더가 추가로 만들어 진다.  
+// build/ install/ log/ install 폴더가 추가로 만들어 진다.  
 ```
-##### 3. 환경 등록  
+##### 3. 환경 등록(테스트)  
 ```c
+// install 폴더안에 setup.bash 파일이 들어 있다.
 $ ls install  
-// install 폴더안에 setup.bash 파일이 들어 있다.  
 $ source install/setup.bash
 ```
 ##### 4. 패키지 생성  
