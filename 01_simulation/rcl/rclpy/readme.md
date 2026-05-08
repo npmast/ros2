@@ -81,6 +81,7 @@ $ colcon build
 Starting >>> robot_control  
 Finished <<< robot_control  
 * 이전 빌드 삭제하기  
+$ cd ~/ros2_ws  
 $ sudo rm -fr install/ build/ log/  
 ##### 8. 환경 적용 및 실행  
 $ source install/setup.bash  
