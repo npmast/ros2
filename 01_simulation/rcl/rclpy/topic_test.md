@@ -11,7 +11,7 @@ $ nano test_pkg.py
 import rclpy
 from rclpy.node import Node
 
-class TestNode(Node):
+class TestNode(Node):                            # Node 를 상속받는다
     def __init__(self):
         super().__init__('test_node')
         self.timer = self.create_timer(1.0, self.timer_callback)
