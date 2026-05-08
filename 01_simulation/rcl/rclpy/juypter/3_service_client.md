@@ -15,7 +15,7 @@ $ jupyter lab
 $ jazzy
 $ ros2 service list -t
 ~
-/turtle1/teleport_absolute [turtlesim/srv/TeleportAbsolute]
+/turtle1/teleport_absolute [turtlesim/srv/TeleportAbsolute]    # /서비스명 [패키지명/srv/서비스타입] 
 ~
 $ ros2 interface show turtlesim/srv/TeleportAbsulute
 float32 x
