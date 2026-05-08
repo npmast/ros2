@@ -33,6 +33,7 @@ def pose_callback(msg):
 ```
 5. subscriber 객체 생성
 ```py
+# 메시지타입, 토픽명, 콜백함수, QoS
 sub = node.create_subscription(Pose, '/turtle1/pose', pose_callback, 10)
 ```
 6. 콜백처리
