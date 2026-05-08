@@ -27,7 +27,7 @@ node = rp.create_node('publisher')            # publisher 이름 속성의 node 
 ```
 6. 퍼블리셔 객체 생성
 ```py
-# 메시지 타입, 토픽명, Qos
+# 메시지 타입, 토픽명, QoS
 pub = node.create_publisher(Twist, '/turtle1/cmd_vel', 10)      # 퍼블리셔 객체 생성
 ```
 7. 전진/회전/곡선/반복
