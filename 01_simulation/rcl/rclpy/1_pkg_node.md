@@ -4,7 +4,7 @@
 ```py
 $ source /opt/ros/jazzy/setup.bash
 $ cd ~/ros2_ws/src
-$ $ ros2 pkg create --build-type ament_python --node-name my_node my_pkg --dependencies rclpy std_msgs
+$ ros2 pkg create --build-type ament_python --node-name my_node my_pkg --dependencies rclpy std_msgs
 # --node-name 옵션을 사용하면 기본 실행 파일(노드)이 자동으로 만들어진다.
 $ sudo apt install tree
 $ tree                # 폴더의 계층구조 확인
