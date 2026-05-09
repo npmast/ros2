@@ -57,14 +57,17 @@ terminal 1
 $ source /opt/ros/jazzy/setup.bash
 $ source install/setup.bash
 & ros2 run my_pkg my_publisher
+
 terminal 2
 $ source /opt/ros/jazzy/setup.bash
 $ source install/setup.bash
 & ros2 run my_pkg my_subscriber
+
 terminal 3
 $ source /opt/ros/jazzy/setup.bash
 $ source install/setup.bash
 & ros2 run turtlesim turtlesim_node
+
 terminal 4
 $ source /opt/ros/jazzy/setup.bash
 $ source install/setup.bash
