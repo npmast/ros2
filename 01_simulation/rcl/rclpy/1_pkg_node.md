@@ -25,16 +25,15 @@ my_pkg
 alias 
 ```
 #### 4. Node
-1. main_test.py  
-   다음 코드를 작성하고 실행하면 'Hi from my_pkg' 가 출력된다.
+1. my_node.py  
 ```py
+$ cd ~/ros2_ws/src/my_pkg/my_pkg
+$ nano my_node.py
 def main():
     print('Hi from my_pkg.')
 
 if __name__ == '__main__':
     main()
-```
-2. my_node.py
-```py
-
+$ python3 my_node.py
+Hi from my_pkg
 ```
