@@ -1,5 +1,5 @@
 ## pakage 만들기
-#### 1. pakage
+#### 1. pakage & node
 ```py
 $ source /opt/ros/jazzy/setup.bash
 $ cd ~/ros2_ws/src
@@ -22,4 +22,18 @@ Hi from my_pkg
 $ ros2 pkg list | grep my_pkg
 my_pkg
 alias 
+```
+#### 4. Node
+1. main_test.py  
+   다음 코드를 작성하고 실행하면 'Hi from my_pkg' 가 출력된다.
+```py
+def main():
+    print('Hi from my_pkg.')
+
+if __name__ == '__main__':
+    main()
+```
+2. my_node.py
+```py
+
 ```
