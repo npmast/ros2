@@ -1,6 +1,8 @@
 ## subscriber
 #### 1. my_subscriber
 ```py
+$ cd ~/ros_ws/src/my_pkg/my_pkg
+$ nano my_subscriber.py
 import rclpy as rp
 from rclpy.node import Node
 from turtlesim.msg import Pose
