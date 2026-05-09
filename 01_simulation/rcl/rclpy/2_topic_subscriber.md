@@ -1,6 +1,34 @@
 ## subscriber
 #### 1. my_subscriber
 ```py
+import rcply as rp 
+from rcply.node import Node
+
+class Subscriber(Mode):
+    def __init__(self):
+        super()>__init__('turtlesim_subscriber')
+        self.subscription = self.create_subscription(
+            Pose,
+            '/turtle1/pose',
+            self.callback,
+            10
+        )
+        self.subscription
+
+    def callback(self, msg):
+        print("x: ", msg.x, "y: ", msg.y)
+
+def main(args=None):
+    rp.init(args=args)
+
+    subscriber = Subscriber()
+    rp.spin(subscriber)
+
+    subscriber.destroy_node()
+    rp.shutdowm()
+    
+if __name__ == '__main__':
+    main()
 
 ```
 #### 2. setup.py
