@@ -1,12 +1,13 @@
 ## subscriber
 #### 1. my_subscriber
 ```py
-import rcply as rp 
-from rcply.node import Node
+import rclpy as rp
+from rclpy.node import Node
+from turtlesim.msg import Pose
 
-class Subscriber(Mode):
+class Subscriber(Node):
     def __init__(self):
-        super()>__init__('turtlesim_subscriber')
+        super().__init__('turtlesim_subscriber')
         self.subscription = self.create_subscription(
             Pose,
             '/turtle1/pose',
@@ -17,7 +18,6 @@ class Subscriber(Mode):
 
     def callback(self, msg):
         print("x: ", msg.x, "y: ", msg.y)
-
 def main(args=None):
     rp.init(args=args)
 
@@ -26,10 +26,9 @@ def main(args=None):
 
     subscriber.destroy_node()
     rp.shutdowm()
-    
+
 if __name__ == '__main__':
     main()
-
 ```
 #### 2. setup.py
 entry_point 수정(시작점 지정)
