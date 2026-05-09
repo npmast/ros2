@@ -1,6 +1,8 @@
 ## Publisher
 #### 1. my_publisher
 ```py
+$ cd ~/ros_ws/src/my_pkg/my_pkg
+$ nano my_publisher.py
 import rclpy as rp
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
