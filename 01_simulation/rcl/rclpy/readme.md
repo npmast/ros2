@@ -4,20 +4,20 @@
 $ mkdir -p ~/ros2_ws/src  
 $ cd ~/ros2_ws
 ```  
-##### 2. 빌드(테스트)
+##### 2. 빌드 (테스트)
 ```c
 $ cd ~/ros2_ws
 $ colcon build  
 $ ls  
 // build/ install/ log/ install 폴더가 추가로 만들어 진다.  
 ```
-##### 3. 환경 등록(테스트)  
+##### 3. 환경 등록 (테스트)  
 ```c
 // install 폴더안에 setup.bash 파일이 들어 있다.
 $ ls install  
 $ source install/setup.bash
 ```
-##### 4. 패키지 생성  
+##### 4. 패키지 생성 (src 폴더 내)
 ```c
 $ cd src  
 $ ros2 pkg create robot_control --build-type ament_python --dependencies rclpy std_msgs  
