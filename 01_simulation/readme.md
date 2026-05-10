@@ -20,23 +20,23 @@
 ros2 run turtlesim turtlesim_node
 ```
 2. turtle_teleop_key
-   * 방향키 -> 이동
+   * 방향키 --> 이동
    * 회전 가능
    * /turtle1/cmd_vel 토픽으로 속도 데이터를 publish 한다.
 ```c
-ros2 run turtlesim turtle_teleop_key
+$ ros2 run turtlesim turtle_teleop_key
 ```
-3. 사용자 노드
-   * publisher 노드  
+3. 노드에 기능을 추가한 객체 생성
+   * publisher  
      /turtle1/cmd_vel 에 속도 publish  
-   * subscriber 노드  
+   * subscriber  
      /turtle1/pose 구독하여 위치 확인  
-   * service client 노드  
+   * service client  
      /clear  
      /spawn  
      /kill  
      서비스 호츨  
-   * action 노드  
+   * action  
      장거리 이동 같은 제어 가능  
 #### 패키지(Package)
 : 노드들과 설정 파일들의 폴더 또는 컨테이너 
@@ -48,13 +48,14 @@ ros2 run turtlesim turtle_teleop_key
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
    * 인터페이스: msg
    * 토픽  
-   | 토픽 | 타입 | 설명 |  
-   | :-- | -- | -- |  
-   | `/turtle1/cmd_vel` | geometry_msgs/msg/Twist | 속도 명령 |  
-   | `/turtle1/pose` | turtlesim/msg/Pose | 위치 정보 |  
-   | `/turtle1/color_sensor` | turtlesim/msg/Color | 바닥 색상 |  
-   | `/parameter_events` | rcl_interfaces/msg/ParameterEvent | 파라미터 |  
-   | `/rosout` | rcl_interfaces/msg/Log | 로그 |  
+| 토픽                     | 타입                             | 설명    |  
+| ----------------------- | --------------------------------- | ----- |  
+| `/turtle1/cmd_vel`      | geometry_msgs/msg/Twist           | 속도 명령 |  
+| `/turtle1/pose`         | turtlesim/msg/Pose                | 위치 정보 |  
+| `/turtle1/color_sensor` | turtlesim/msg/Color               | 바닥 색상 |  
+| `/parameter_events`     | rcl_interfaces/msg/ParameterEvent | 파라미터  |  
+| `/rosout`               | rcl_interfaces/msg/Log            | 로그    |  
+
 
    * 실행
 ```c
