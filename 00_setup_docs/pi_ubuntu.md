@@ -90,7 +90,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > ```
 > * sudo nano /etc/X11/xorg.conf 파일을 열어 다음을 복사한다.  
 > ```c
->Section "Device"        주석처리
+>Section "Device"
 >    Identifier "Configured Video Device"
 >    Driver "dummy"
 >EndSection
