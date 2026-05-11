@@ -62,7 +62,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > ```
 > # 우분투 버전 확인
 > $ lsb_release -a
-> # 자동 업데이트 설정
+> # 자동 업데이트 설정(server 설치시)
 > $ sudo nano /etc/apt/apt.conf/20auto-upgrades
 >   APT::Periodic::Update-Package-List "0";     // 패키지 자동 업데이트 끄기
 >   APT::Reriodic::Unattended-Upgrade "0";      // 보안 업데이트 자동 설치 끄기
@@ -129,20 +129,6 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > $ sudo systemctl restart gdm3
 > ```
 #### 3. jupyter lab  
-> jupyter 는 전역으로 설치하고 가상환경별로 커널을 만들어 사용한다.  
-> * jupyter lab 설치
-> ```c
-> $ sudo apt update
-> //sudo apt install -y python3-venv python3-pip pipx
-> //pipx ensurepath                                                                  // 사용자 PATH에 자동 연결
-> //source ~/.bashrc                                                                 // 현재 터미널 적용
-> //pipx install jupyterlab                                                          // jupyterlab 설치
-> $ python3 -m pip config set global.break-system-packages true                        // pip 전역 사용 설정
-> $ sudo apt install jupyter-core                                                      // 핵심 패키지 설치  
-> $ pip3 install jupyterlab                                                            // jupyterlab 설치
-> $ sudo reboot                                                                        
-> $ jupyter lab
-> ```
 > * 가상환경 생성 및 등록(가상환경별 실행)  
 > 가상환경에서는 pip 사용을 한다.
 > ```c
@@ -150,6 +136,9 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > $ python3 -m venv --system-site-packages ~/venvs/<가상환경 명>          // 가상환경 생성
 > $ source ~/venvs/ros2/bin/activate                                          // 활성화
 > $ python -m pip install --upgrade pip
+> $ pip install jupyterlab
+> $ sudo reboot
+> $ jupyter lab
 > $ python -m pip install ipykernel                                           // ipykernel 패키지 설치
 > $ python -m ipykernel install --user --name <ㅖ가상환경이름> --display-name <"Python\(ros2\)": 커널이름> // 커널등록
 > $ jupyter kernelspec list                                                    // 커널 확인
