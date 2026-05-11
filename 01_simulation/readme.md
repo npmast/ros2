@@ -17,13 +17,15 @@
    * 위치 계산  
    * 배경 변경 등  
 ```c
-ros2 run turtlesim turtlesim_node
+- Turtlesim 실행
+$ ros2 run turtlesim turtlesim_node
 ```
 2. turtle_teleop_key
    * 방향키 --> 이동
    * 회전 가능
    * /turtle1/cmd_vel 토픽으로 속도 데이터를 publish 한다.
 ```c
+- keyboard 방향키
 $ ros2 run turtlesim turtle_teleop_key
 ```
 3. 노드에 기능을 추가한 객체 생성
