@@ -90,5 +90,5 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 #### 셀 시작 스크립트에 소싱하기
 ```c
 $ echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-$ echo "export ROS_DOMAIN_ID=10 >> ~/.bashrc
+$ echo "export ROS_DOMAIN_ID=10" >> ~/.bashrc
 ```
