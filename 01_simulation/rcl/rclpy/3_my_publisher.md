@@ -16,9 +16,11 @@ class Publisher(Node):
          10
       )
       timer_period = 0.5
-      self.timer = self.create_timer(timer_period, self.timer_callback)
+      self.timer = self.create_timer(
+         timer_period,                     # 실행 주기
+         self.timer_callback)
    def timer_callback(self):
-      msg = Twist()
+      msg = Twist()                        # 빈 속도 객체 생성
       msg.linear.x = 2.0
       msg.angular.z = 2.0
       self.publisher.publish(msg)
