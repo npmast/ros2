@@ -1,5 +1,5 @@
-## pakage 만들기
-: colcon build 실행하여 src 폴더가 있어야 한다.(readme.md)
+## pakage 만들기  
+: src 폴더에서 패키지를 만들고 ros2_ws 폴더에서 build 한다.
 #### 1. pakage & node
 ```py
 $ source /opt/ros/jazzy/setup.bash
