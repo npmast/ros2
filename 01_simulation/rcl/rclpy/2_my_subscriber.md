@@ -1,5 +1,9 @@
 ## subscriber
 #### 1. my_subscriber
+> ROS2에서 turtlesim 패키지의 pose 메시지 타입을 가져온다.
+> turtlesim: ROS2의 예제 시뮬레이터 패키지 이름
+> .msg: 메시지 타입들이 들어있는 폴더
+> pose: 거북이의 위치/방향 정보를 담은 메시티 타입
 ```py
 $ cd ~/ros_ws/src/my_pkg/my_pkg
 $ nano my_subscriber.py
