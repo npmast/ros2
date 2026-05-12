@@ -3,7 +3,7 @@
 > ROS2에서 turtlesim 패키지의 pose 메시지 타입을 가져온다.  
 > turtlesim: ROS2의 예제 시뮬레이터 패키지 이름  
 > .msg: 메시지 타입들이 들어있는 폴더  
-> pose: 거북이의 위치/방향 정보를 담은 메시티 타입  
+> pose: 거북이의 위치/방향 정보를 담은 메시지 타입  
 ```py
 $ cd ~/ros_ws/src/my_pkg/my_pkg
 $ nano my_subscriber.py
@@ -15,23 +15,25 @@ class Subscriber(Node):
     def __init__(self):
         super().__init__('turtlesim_subscriber')
         self.subscription = self.create_subscription(
-            Pose,
-            '/turtle1/pose',
+            Pose,                           # 데이터 타입 
+            '/turtle1/pose',                # 토픽 이름
             self.callback,
             10
         )
-        self.subscription
 
     def callback(self, msg):
         print("x: ", msg.x, "y: ", msg.y)
+
 def main(args=None):
     rp.init(args=args)
-
     subscriber = Subscriber()
-    rp.spin(subscriber)
-
-    subscriber.destroy_node()
-    rp.shutdowm()
+    try:
+        rp.spin(subscriber)                    # 메시지가 올 때까지 대기(콜백호출 대기) 
+    except KeyboardInterrupt:
+        print('/nexit')
+    finally:
+        subscriber.destroy_node()
+        rp.shutdown()
 
 if __name__ == '__main__':
     main()
