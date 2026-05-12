@@ -153,7 +153,7 @@ $ ros2 run turtlesim turtle_teleop_key
    $ ros2 service list
    $ ros2 service type /reset
    std_srvs/srv/Empty
-   $ ros2 interface show std/srvs/srv/Empty
+   $ ros2 interface show std_srvs/srv/Empty
    ---
    $ ros2 service call /reset std_srvs/srv/Empty {}
 
