@@ -38,7 +38,7 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
     $ source .venv/bin/activate
     $ pip install jupyterlab
     $ jupyter lab --version
-    $ jupyter lab                                  // 실행
+    $ jupyter lab                         
     $ python -m ipykernel install --user --name <가상환경이름> --display-name "<디스플레이이름>"      // 커널 등록: 가상이름:.venv, 디스플레이 이름: Python(ros:jazzy)
     $ jupyter kernelspec uninstall <커널이릌>      // 커널 삭제
     ```
@@ -139,10 +139,9 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
 > $ pip install jupyterlab
 > $ sudo reboot
 > $ jupyter lab
-> $ python -m pip install ipykernel                                           // ipykernel 패키지 설치
-> $ python -m ipykernel install --user --name <ㅖ가상환경이름> --display-name <"Python\(ros2\)": 커널이름> // 커널등록
+> $ python -m pip install ipykernel                                                  // ipykernel 패키지 설치
+> $ python -m ipykernel install --user --name .venv --display-name "Python(ros2)"    // 커널등록
 > $ jupyter kernelspec list                                                    // 커널 확인
-> 
 > $ jupyter kernelspec uninstall {커널이름}                                     // 커널 삭제
 > $ deactivate                                                                  // 비활성화
 > ```
