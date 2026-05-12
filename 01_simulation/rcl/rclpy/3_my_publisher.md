@@ -10,7 +10,11 @@ from geometry_msgs.msg import Twist
 class Publisher(Node):
    def __init__(self):
       super().__init__('turtlesim_publisher')
-      self.publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
+      self.publisher = self.create_publisher(
+         Twist,                           # 데이터 타입
+         '/turtle1/cmd_vel',              # 토픽 이름
+         10
+      )
       timer_period = 0.5
       self.timer = self.create_timer(timer_period, self.timer_callback)
    def timer_callback(self):
@@ -21,12 +25,14 @@ class Publisher(Node):
 
 def main(args=None):
     rp.init(args=args)
-
     publisher = Publisher()
-    rp.spin(publisher)
-
-    publisher.destroy_node()
-    rp.shutdowm()
+   try:
+       rp.spin(publisher)
+   except KeyboardInterrupt:
+      print('/n exit')
+   finally:
+       publisher.destroy_node()
+       rp.shutdown()
 
 if __name__ == '__main__':
     main()
