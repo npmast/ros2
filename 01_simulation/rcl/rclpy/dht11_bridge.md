@@ -103,8 +103,10 @@ $ source install/setup.bash
 #### 7. 실행
 ```c
 $ ls /dev/ttyACM*
+/dev/ttyACM0
 $ ros2 run dht_sensor_bridge dht_node
 $ ros2 topic list
 $ ros2 topic echo /temperature
 $ ros2 topic echo /humidity
+==> 권한 문제 시 dialout 그룹에 추가: sudo usermod -aG dialout $USER
 ```
