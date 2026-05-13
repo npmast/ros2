@@ -110,12 +110,12 @@ $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03
 2. 가상 머신 네트워크 어댑터 설정(VM Settings)
   VM > Setting > HardWare에서 Network Adapter > Network connection에 Bridged~ 와 Replicate~ 선택사항 선택 > OK
 3. 가상 머신 재부팅 > 터미널에서 ip a 로 ip를 확인한다.(VM과 SBC가 동일한 네트워크로 잡혀있어야 한다.)
-4. 확인  
+4. 확인
+   1.  __TurtleBot3 bringup 실행: 원격 PC에서 SBC 사용하려면 먼저 실행되어야 한다.__   
    $ echo $ROS_DIMAIN_ID  
-   $ echo $ROS_LOCALHOST_ONLY          // 반드시 0이 나와야 한다.  
-   * __TurtleBot3 bringup 실행: 원격 PC에서 SBC 사용하려면 실행되어야 한다.__   
+   $ echo $ROS_LOCALHOST_ONLY          // 반드시 0이 나와야 한다.     
    $ __ros2 launch turtlebot3_bringup robot.launch.py__  
-   * 원격 PC 에서 Topic 확인  
+   2. 원격 PC 에서 Topic 확인  
    $ ros2 topic list  
    $ ros2 topic echo /scan              // topic 데이터 확인(LiDAR)  
    $ ros2 topic info /scan              // topic 타입 확인
