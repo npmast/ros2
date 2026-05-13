@@ -112,8 +112,8 @@ $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03
 4. 확인  
    $ echo $ROS_DIMAIN_ID  
    $ echo $ROS_LOCALHOST_ONLY          // 반드시 0이 나와야 한다.  
-   * TurtleBot3 에서 실행                      // bringup 실행  
-   $ ros2 launch turtlebot3_bringup robot.launch.py  
+   * __TurtleBot3 bringup 실행: 원격 PC에서 SBC 사용하려면 실행되어야 한다.__   
+   $ __ros2 launch turtlebot3_bringup robot.launch.py__  
    * 원격 PC 에서 Topic 확인  
    $ ros2 topic list  
    $ ros2 topic echo /scan              // topic 데이터 확인(LiDAR)  
