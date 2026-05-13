@@ -102,6 +102,7 @@ $ source ~/.bashrc
 $ echo 'export LDS_MODEL=LDS-02' >> ~/.bashrc # If you are using LDS-02  
 $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03  
 >$ source ~/.bashrc
+#### 9. Bringup
 #### * 원격PC 네트워크 설정(VMware): TURTLEBOT3와 VMWare의 네트워크를 동일하게 맞춘다.
 1. bridge mode 설정
   Edit > Virtual Network Editor > 하단의 Change Setting > VMnet0 (Bridbe) 선택
