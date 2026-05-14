@@ -158,7 +158,7 @@ setup(
 ##### 6. 빌드  
 ```c
 $ cd ~/ros2_ws
-$ colcon build
+$ colcon build --packages-select arduino_led_bridge
 $ source install/setup.bash
 ```
 ##### 7. port 확인  
