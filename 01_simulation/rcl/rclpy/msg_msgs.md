@@ -5,6 +5,19 @@
 $ cd ~/ros2_ws/src
 $ ros2 pkg create --build-type ament_cmake my_pkg_msgs
 ```
+#### 2. MyCmdPoseVel.msg
+```c
+$ cd ~/ros2_ws/src/my_pkg_msgs
+$ mkdir msg
+$ nano MyCmdPoseVel.msg
+float32 cmd_vel_linear
+float32 cmd_vel_angular
+
+float32 pose_x
+float32 pose_y
+float32 linear_vel
+float32 angular_vel
+```
 #### 2. CMakeList.txt
 ```c
 $ cd ~/ros2_ws/src/my_pkg_msgs/CMakeLists.txt
@@ -35,4 +48,13 @@ if(BUILD_TESTING)
 $ cd ~/ros2_ws
 $ jazzy
 $ colcon build
+$ source insatll/setup.bash
+$ ros2 insterface show my_pkg_msgs/msg/MyCmdPoseVel
+float32 cmd_vel_linear
+float32 cmd_vel_angular
+
+float32 pose_x
+float32 pose_y
+float32 linear_vel
+float32 angular_vel
 ```
