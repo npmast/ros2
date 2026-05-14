@@ -132,3 +132,8 @@ $ tar -xvf opencr_update.tar.bz2
 ### 2. 업로드
 >$ cd ./opencr_update  
 $ ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
+### 3. 자주 사용하는 메시지 타입  
+> std_msgs/msg/String  
+> geometry_msgs/msg/Twist  
+> sensor_msgs/msg/Image  
+> sensor_msgs/msg/LaserScan  
