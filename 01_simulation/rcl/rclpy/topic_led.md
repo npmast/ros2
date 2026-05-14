@@ -129,6 +129,8 @@ if __name__ == '__main__':
     main()
 ```
 ##### 5. setup.py 수정  
+$ cd ~/ros2_ws/src/arduino_led_bridge  
+$ nano setup.py
 setup.py에 실행 엔트리를 추가해야 ros2 run 으로 실행할 수 있다.  
 ```py
 from setuptools import setup
