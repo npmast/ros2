@@ -137,3 +137,52 @@ $ ros2 topic list
 $ ros2 topic echo /chatter
 $ ros2 node list
 ```
+### Launch
+#### 1. launch 폴더 생성 및 launch 파일 생성
+```c
+$ cd ~/ros2_ws/src/test_pkg
+$ mkdir launch
+$ nano test.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([                        // 실행할 노드 목록
+        Node(
+            package='test_pkg',                        // 패키지 이름
+            executable='publisher_node',               // setup.py에 등록한 실행 이름
+            name='publisher_node'                      // ROS2 노드 이름
+        ),
+        Node(
+            package='test_pkg',
+            executable='subscriber_node',
+            name='subscriber_node'
+        ),
+    ])
+```
+#### 2. setup.py 수정
+```c
+a. 헤더 추가
+from glob import glob
+import os
+b. data_files 에 추가
+   data_files=[
+       ('share/ament_index/resource_index/packages',
+           ['resource/' + package_name]),
+       ('share/' + package_name, ['package.xml']),
+       (os.path.join('share', package_name, 'launch'),
+       glob('launch/*.launch.py')),
+   ],
+```
+#### 3. build
+```c
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+```
+#### 4. launch 실행
+```c
+ros2 launch test_pkg test.launch.py            // 동시에 실행된다.
+[publisher_node] Hello ROS2 0
+[subscriber_node] Received: Hello ROS2 0
+```
