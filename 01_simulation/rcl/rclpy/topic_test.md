@@ -1,3 +1,4 @@
+### NODE 구조와 통신 방식  
 1. 패키지 생성
 ```c
 $ cd ~/ros2_ws/src
@@ -29,7 +30,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
-3. Publisher
+3. Publisher 만들기  
 ```c
 $ cd ~/ros2_ws/src/test_pkg/test_pkg
 $ nano publisher_node.py
@@ -42,9 +43,9 @@ class PublisherNode(Node):
     def __init__(self):
         super().__init__('publisher_node')
         self.publisher_ = self.create_publisher(
-            String,
-            'chatter',
-            10
+            String,                                // 데이터 타입
+            'chatter',                             // topic 이름(기본 문자열 토픽)                  
+            10                                     // QoS
         )
         self.timer = self.create_timer(
             1.0,
@@ -54,7 +55,7 @@ class PublisherNode(Node):
 
     def publish_message(self):
         msg = String()
-        msg.data = f'Hello ROS2 {self.count}'
+        msg.data = f'Hello ROS2 {self.count}'            // f-string
         self.publisher_.publish(msg)
         self.get_logger().info(msg.data)
         self.count += 1
@@ -69,7 +70,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
-4. subscriber
+4. subscriber 만들기
 ```c
 $ nano subscriber.py
 
