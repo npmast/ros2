@@ -92,3 +92,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 $ echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 $ echo "export ROS_DOMAIN_ID=10" >> ~/.bashrc
 ```
+#### 3. ros2 삭제
+```c
+$ ros2 apt remove ros-jazzy-* && sudo apt autoremove
+```
