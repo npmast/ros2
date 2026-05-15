@@ -1,5 +1,5 @@
 ## pakage 만들기  
-: src 폴더에서 패키지를 만들고 ros2_ws 폴더에서 build 한다.
+__: src 폴더에서 패키지를 만들고 ros2_ws 폴더에서 build 한다.__
 #### 1. pakage & node
 ```py
 $ source /opt/ros/jazzy/setup.bash
