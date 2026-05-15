@@ -6,7 +6,20 @@
 * 토픽: 사내 방송 채널(데이터 통로)    
 * Publisher: 방송 송신자  
 * Subscriber: 방송 수신자
-* __기능을 작은 프로그램으로 분리하고, 서로 메시지로 통신하는 구조__  
+* __기능을 작은 프로그램으로 분리하고, 서로 메시지로 통신하는 구조__
+#### 패키지(Package)
+: 노드들과 설정 파일들의 폴더 또는 컨테이너 
+```c
+$ ros2 pkg list
+```
+1. turtlesim pakages
+```c
+$ ros2 pkg executables turtlesims
+turtlesim draw_square              # 사각형 모양으로 움직임
+turtlesim mimic                    # 복수개 실행시키는 노드
+turtlesim turtle_teleop_key        # 키보드를 퍼블리시하는 노드
+turtlesim turtlesim_node           # 2D 시뮬레이터 노드
+```
 #### 노드(Node)
 : 연산을 수행하는 최소 단위의 프로세스로 수 많은 노드들의 집합으로 하나의 로봇 시스템이 만들어 진다.  
 즉 로붓 시스템의 구성은 노드들로 이루어진다. 모터 제어 노드, 라이다(LiDAR) 노드, 카메라 노드, 네비게이션 노드, 센서 융합 노드 등이 하나의 기능을 담당하고  서로 필요한 정보를 통신으로 주고 받는다. 노드는 실제 실행 파일이다.  
@@ -40,8 +53,7 @@ $ ros2 run turtlesim turtle_teleop_key
      서비스 호츨  
    * action  
      장거리 이동 같은 제어 가능  
-#### 패키지(Package)
-: 노드들과 설정 파일들의 폴더 또는 컨테이너 
+
 #### 노드 통신
 1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
