@@ -1,7 +1,7 @@
 #### 1. 설치 파일 불러오기
 ```c
 $ source /opt/ros/humble/setup.bash
-or
+또는 Run commands 설정
 $ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc      // 셸에 소스 추가
 ```
 #### 2. 환경 변수
