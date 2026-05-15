@@ -6,7 +6,7 @@ $ cd ~/ros2_ws/src
 $ ros2 pkg create --build-type ament_cmake my_pkg_msgs
 ```
 #### 2. MyCmdPoseVel.msg
-> my_pkg_msgs 폴더안에 msgs 폴더를 만든다.  
+> my_pkg_msgs 폴더안에 msg 폴더를 만든다.  
 > ros는 데이터 포맷의 정의가 msg 폴더에 저장된다.  
 ```c
 $ cd ~/ros2_ws/src/my_pkg_msgs
