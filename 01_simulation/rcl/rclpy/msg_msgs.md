@@ -51,7 +51,7 @@ $ cd ~/ros2_ws
 $ jazzy
 $ colcon build
 $ source install/setup.bash
-$ ros2 interface show my_pkg_msgs/msg/MyCmdPoseVel
+$ ros2 interface show my_pkg_msgs/msg/MyCmdPoseVel        // ros2_ws 폴더에서 확인
 float32 cmd_vel_linear
 float32 cmd_vel_angular
 
