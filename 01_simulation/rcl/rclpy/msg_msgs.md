@@ -50,8 +50,8 @@ if(BUILD_TESTING)
 $ cd ~/ros2_ws
 $ jazzy
 $ colcon build
-$ source insatll/setup.bash
-$ ros2 insterface show my_pkg_msgs/msg/MyCmdPoseVel
+$ source install/setup.bash
+$ ros2 interface show my_pkg_msgs/msg/MyCmdPoseVel
 float32 cmd_vel_linear
 float32 cmd_vel_angular
 
