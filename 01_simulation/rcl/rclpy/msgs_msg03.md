@@ -15,7 +15,7 @@ class MyVel(Node):
 		self.sub_pose = self.create_subscription(Pose, '/turtle1/pose', self.callback_pose, 10)
 		self.cmd_pose = MyCmdPoseVel()
 
-	def callback_pose(self, msg):
+	def callback_pose(self, msg):						# Pose 데이터 타입을 메시지 정의타입으로 바꿈
 		self.cmd_pose.pose_x = msg.x
 		self.cmd_pose.pose_y = msg.y
 		self.cmd_pose.linear_vel = msg.linear_velocity
