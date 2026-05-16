@@ -1,4 +1,8 @@
+### Pose 토픽과 Twist 토픽 구독하기
+
 ```c
+cd ~/ros2_ws/src/my_mkg/my_mkg
+nano turtle_vel.py
 import rclpy as rp
 from rclpy.node import Node
 from turtlesim.msg import Pose
