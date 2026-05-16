@@ -6,8 +6,8 @@ $ cd ~/ros2_ws/src/my_mkg/my_mkg
 
 import rclpy as rp
 from rclpy.node import Node
-from turtlesim.msg import Pose								// 위치
-from geometry_msgs.msg import Twist							// 속도
+from turtlesim.msg import Pose								# 위치
+from geometry_msgs.msg import Twist							# 속도
 from my_pkg_msgs.msg import MyCmdPoseVel
 
 class MyVel(Node):
@@ -23,7 +23,7 @@ class MyVel(Node):
 		self.cmd_pose.linear_vel = msg.linear_velocity
 		self.cmd_pose.angular_vel = msg.angular_velocity
 		
-	def callback_cmd(self, msg):
+	def callback_cmd(self, msg):					# 선속도 x 와 각속도 z 만 변환
 		self.cmd_pose.cmd_vel_linear = msg.linear.x
 		self.cmd_pose.cmd_vel_angular = msg.angular.z
 		print(self.cmd_pose)
