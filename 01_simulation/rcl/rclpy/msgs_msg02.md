@@ -1,6 +1,6 @@
 ### 토픽 구독  
 #### 1. turtle_vel.py
-> 일단 MyVel 노드에 구독 객체를 생성한다.
+> 일단 MyVel 노드에 토픽(/trutle1/pose)을 구독한다.
 ```c
 $ cd ~/ros2_ws/src/my_pkg/my_pkg
 $ nano turtle_vel.py
