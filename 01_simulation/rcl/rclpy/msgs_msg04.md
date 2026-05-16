@@ -20,7 +20,7 @@ class MyVel(Node):
 	def callback_cmd(self, msg):
 		self.cmd_pose.cmd_vel_liner = msg.linear.x
 		self.cmd_pose.cmd_vel_angular = msg.angular.z
-		print(cmd_pose)
+		print(self.cmd_pose)
 		
 def main(args=None):
 	rp.init(args=args)
