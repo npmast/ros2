@@ -24,7 +24,7 @@ class MyVel(Node):
 		self.cmd_pose.angular_vel = msg.angular_velocity
 		
 	def callback_cmd(self, msg):
-		self.cmd_pose.cmd_vel_liner = msg.linear.x
+		self.cmd_pose.cmd_vel_linear = msg.linear.x
 		self.cmd_pose.cmd_vel_angular = msg.angular.z
 		print(self.cmd_pose)
 
