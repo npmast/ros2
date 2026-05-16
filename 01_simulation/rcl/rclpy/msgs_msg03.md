@@ -1,5 +1,5 @@
 ### 정의한 자료형에 데이터 출력
-> trutlesim 의 pose 를 구독하여 정의한 자료형에 위치정보를 출력한다.
+> trutlesim 의 토픽(/turtle1/pose)을 구독하여 정의한 자료형으로 위치정보를 출력한다.
 #### 1. turtle_vel.py
 ```c
 $ cd ~/ros2_ws/src/my_pkg/my_pkg
