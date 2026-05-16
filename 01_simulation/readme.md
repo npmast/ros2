@@ -23,6 +23,7 @@ turtlesim turtlesim_node           # 2D 시뮬레이터 노드
 #### 노드(Node)
 : 연산을 수행하는 최소 단위의 프로세스로 수 많은 노드들의 집합으로 하나의 로봇 시스템이 만들어 진다.  
 즉 로붓 시스템의 구성은 노드들로 이루어진다. 모터 제어 노드, 라이다(LiDAR) 노드, 카메라 노드, 네비게이션 노드, 센서 융합 노드 등이 하나의 기능을 담당하고  서로 필요한 정보를 통신으로 주고 받는다. 노드는 실제 실행 파일이다.  
+* 노드 조회: ros2 node list  
 * 실행 명령: ros2 run [PKG] [NODE]
 1. turtlesim_node
    * 거북이 생성  
@@ -55,13 +56,17 @@ $ ros2 run turtlesim turtle_teleop_key
      장거리 이동 같은 제어 가능  
 
 #### 노드 통신
+> $ ros2 [topic|service\action] list -t  
+> [t]  
+> $ ros2 interface show [t]   
 1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
    어떤 노드가 특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
    * 인터페이스: msg
-   * 토픽  
+   * 토픽
+   > 토픽 조회: ros2 topic list  
 | 토픽                     | 타입                             | 설명    |  
 | ----------------------- | --------------------------------- | ----- |  
 | `/turtle1/cmd_vel`      | geometry_msgs/msg/Twist           | 속도 명령 |  
@@ -131,6 +136,7 @@ $ ros2 run turtlesim turtle_teleop_key
    클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
    요청과 응답 메시지에는 각 데이터 타입이 존재한다.
    * 인터페이스: srv
+   * 서비스 조회: ros2 service list
    * 관련 서비스
      | 서비스                          |  역할            |  
      | ------------------------------- | ---------------- |  
@@ -191,6 +197,7 @@ $ ros2 run turtlesim turtle_teleop_key
    취소가 가능하며 작업을 안전하게 관리할 수 있다.
    * 인터페이스: action
    * 실행
+    > 액션 조회: ros2 action list  
 ```c
    $ ros2 action list
    $ ros2 action list -t
