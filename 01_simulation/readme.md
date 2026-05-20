@@ -102,7 +102,7 @@ $ ros2 run turtlesim turtle_teleop_key
    float32 angular_velocity
 
    - /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
-   $ ros2 topic echo /turtle1/pose                      // 토픽 내용 확인
+   $ ros2 topic echo /turtle1/pose                     // 토픽 내용 확인
    $ ros2 topic bw /turtle1/pose                        // 토픽 대역폭 확인
    $ ros2 topic hz /turtle1/pose                        // 토픽 주기 확인
 ```
@@ -120,7 +120,9 @@ $ ros2 run turtlesim turtle_teleop_key
             float64 x
             float64 y
             float64 z
-
+```
+  * 토픽 퍼블리시
+```c
    - /turtle1/cmd_vel 토픽에 1번만 발행. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"
    - 앞으로 가면서 회전
@@ -130,6 +132,12 @@ $ ros2 run turtlesim turtle_teleop_key
    - 새로운 터미널을 열어 cmd_vel 토픽을 이중으로 발행한다.
    $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 3.7}}"
    - 새로운 터미널을 연다.
+```
+  * bag 기록
+```c
+   $ ros2 bag record /turtle1/cmd_vel
+   $ ros2 bag info rosbag2_2026_05_20-21_39_08
+   $ ros2 bag play rosbag2_2026_05_20-21_39_08
    $ source /opt/ros/jazzy/setup.bash
    $ rqt                                          // Debug, tf 체크 해제
 ```
