@@ -163,7 +163,13 @@ $ ros2 run turtlesim turtle_teleop_key
    $ ros2 run turtlesim turtlesim_node
 
    - other terminal open 
-   $ ros2 service list                                           // 서비스 목록 확인. info 를 이용해도 된다.  
+   $ ros2 service list                                           // 서비스 목록 확인. info 를 이용해도 된다.
+   $ ros2 service type /clear
+   std_srvs/srv/Empty
+   $ ros2 service type /kill
+   turtlesim/srv/Kill
+   $ ros2 service type /spawn
+   turtlesim/srv/Spawn
    $ ros2 service type /turtle1/teleport_absolute                // 해당 서비스 타입 확인
    turtlesim/srv/TeleportAbsolute
    $ ros2 interface show turtlesim/srv/TeleportAbsolute/          // 해당 서비스 타입의 데이터 타입
@@ -171,13 +177,15 @@ $ ros2 run turtlesim turtle_teleop_key
    float32 y
    float32 theta
    ---
+```
+  * 서비스 콜
    - TeleportAbsolute 서비스 콜(순간 이동)
    $ ros2 service call /turtle1/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"     
    requester: making request: tur~            // 요청 
 
    response:                                  // 응답
    tur~
-   - reset service
+   - reset service 처음 위치로 이동
    $ ros2 service list
    $ ros2 service type /reset
    std_srvs/srv/Empty
@@ -185,7 +193,7 @@ $ ros2 run turtlesim turtle_teleop_key
    ---
    $ ros2 service call /reset std_srvs/srv/Empty {}
 
-   - spawn service
+   - spawn service 새로 생성
    $ ros2 service list
    $ ros2 service type /spawn
    turtlesim/srv/Spawn
@@ -195,6 +203,11 @@ $ ros2 run turtlesim turtle_teleop_key
    float32 theta
    string name # Optional.
    ---
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 9, theta: 1.57, name: 'one'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 7, theta: 1.57, name: 'two'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 5, theta: 1.57, name: 'three'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 3, theta: 1.57, name: 'four'}"
+   $ ros2 secvice call /kill turtlesim/srv/Kill "name: 'turtle1'"
    string nameros
    - namespace: turtlesim1, turtlesim2
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // turtlesim2 생성  
