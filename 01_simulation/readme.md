@@ -208,7 +208,7 @@ $ ros2 run turtlesim turtle_teleop_key
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 7, theta: 1.57, name: 'two'}"
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 5, theta: 1.57, name: 'three'}"
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 3, theta: 1.57, name: 'four'}"
-   $ ros2 secvice call /kill turtlesim/srv/Kill "name: 'turtle1'"
+   $ ros2 service call /kill turtlesim/srv/Kill "name: 'turtle1'"
    string nameros
    - namespace: turtlesim1, turtlesim2
    $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // turtlesim2 생성  
@@ -232,8 +232,12 @@ $ ros2 run turtlesim turtle_teleop_key
    float32 delta                                       // 결과
    ---
    float32 remaining                                   // 피드
+   - 액션 목표 전달: 반바퀴 이동
    $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 3.14}"
 ```
    * 내비게이션 이동/로봇 팔 궤적/맵 빌딩/음성 인식 및 응답  
-
+4. **인터페이스**
+  > ROS 노드 간에 데이터를 주고 받기 위해서는 토픽, 서비스, 액션을 사용한다.  
+  > 이때 사용되는 데이터 형태를 ROS 2 인터페이스라고 한다.
+  > 토픽, 서비스, 액션은 각각 msg, srv, action interface를 사용하고 있다. 
      
