@@ -87,7 +87,7 @@ $ ros2 run turtlesim turtle_teleop_key
    /turtle1/cmd_vel
    /turtle1/color_sensor
    /turtle2/posero
-   $ ros2 topic type /turtle1/pose                     // 해당 토픽의 타입 확인
+   $ ros2 topic type /turtle1/pose                     // 해당 토픽의 메시지 타입 확인
    turtlesim/msg/Pose
    $ ros2 topic info /turtle1/pose                     // 해당 토픽의 정보 확인
    Type: turtlesim/msg/Pose
@@ -102,7 +102,9 @@ $ ros2 run turtlesim turtle_teleop_key
    float32 angular_velocity
 
    - /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
-   $ ros2 topic echo /turtle1/pose
+   $ ros2 topic echo /turtle1/pose                      // 토픽 내용 확인
+   $ ros2 topic bw /turtle1/pose                        // 토픽 대역폭 확인
+   $ ros2 topic hz /turtle1/pose                        // 토픽 주기 확인
 ```
 
    * 주행명령을 전달하는 cmd_vel 토픽
