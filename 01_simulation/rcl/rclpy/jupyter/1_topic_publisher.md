@@ -37,10 +37,10 @@ msg.angular.z = 0.0
 pub.publish(msg)
 print('Forward')
 
-msg.linear.x = 2.0
+msg.linear.x = -2.0
 msg.angular.z = 0.0
 pub.publish(msg)
-print('Forward')
+print('Backward')
 
 msg.linear.x = 2.0
 msg.angular.z = 1.0
