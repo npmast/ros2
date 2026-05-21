@@ -1,4 +1,7 @@
-### turtlesim 서비스 테스트  
+### 서비스
+> 서비스 서버(요청을 기다림 + 응답 반환)    
+> 서비스 클라이언트(요청 전송 + 응답 수신)  
+#### turtlesim 서비스 테스트  
 ```py
 $ ros2 run turtlesim turtlesim_node
 $ ros2 service list
