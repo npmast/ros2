@@ -163,9 +163,9 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
   $ jupyter server list
 
   - 비번 재설정
-  $ jupyter lab password
-  Enter passwore;
-  Verify passwore;
+  $ jupyter lab password  
+  Enter password;  
+  Verify password;  
 #### 4. VSCode
 > code.visualstdio.com/Download > Arm64 다운로드
 > ```c
