@@ -41,7 +41,7 @@ nano ~/ros2_ws/src/my_pkg/setup.py
             'my_node = my_pkg.my_node:main',
             'my_subscriber = my_pkg.my_subscriber:main',
             'my_publisher = my_pkg.my_publisher:main',
-			      'turtle_vel = my_pkg.turtle_vel:main',
+			'turtle_vel = my_pkg.turtle_vel:main',
             'my_service_server = my_pkg.my_service_server:main'    <== 수정
         ],
     },
