@@ -58,4 +58,5 @@ $ ros2 run my_pkg my_service_server
 terminal 2
 $ source ~/ros2_ws/install/setup.bash
 $ ros2 service call /multi_spawn my_pkg_msgs/srv/MultiSpawn "{num: 1}"
+(요청 번호 1을 담아 MultiSpawn 타입의 /multi_spawn 서비스를 호출하라.)
 ```
