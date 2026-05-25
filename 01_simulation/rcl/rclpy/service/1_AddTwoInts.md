@@ -48,7 +48,7 @@ from example_interfaces.srv import AddTwoInts
 class AddClient(Node):
     def __init__(self):
         super().__init__('add_client')
-        self.client = self.create_client(
+        self.client = self.create_client(               # 클라이언트 생성
             AddTwoInts,
             'add_two_ints'
         )
