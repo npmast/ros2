@@ -8,7 +8,6 @@
 $ ros2 run turtlesim turtlesim_node
 $ ros2 run turtlesim turtle_teleop_key
 $ ros2 service list
-$ ros2 service list
 /clear
 /kill
 /reset
