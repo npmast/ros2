@@ -14,6 +14,7 @@ $ ros2 pkg create --build-type ament_cmake my_pkg_msgs
 ```c
 $ cd ~/ros2_ws/src/my_pkg_msgs
 $ mkdir msg
+$ cd msg
 $ nano MyCmdPoseVel.msg                      # 6가지의 자료형을 만든다.
 float32 cmd_vel_linear
 float32 cmd_vel_angular
