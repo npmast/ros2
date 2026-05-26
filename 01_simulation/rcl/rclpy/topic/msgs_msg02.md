@@ -18,7 +18,7 @@ class MyVel(Node):
             10)
  
     def callback_pose(self, msg):
-        print("x: ", msg.x, "y: ", msg.y)
+        print("x:", msg.x, " y:", msg.y)
 
 def main(args=None):
     rp.init(args=args)
