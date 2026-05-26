@@ -66,7 +66,7 @@ if __name__ == '__main__':
     main()
 ```
 ##### 6. 실행 등록  
-$ cd ~/ros2_ws/src/robot>control  
+$ cd ~/ros2_ws/src/robot_control  
 $ nano setup.py  
 entry_points 부분 찾아서 수정한다.  
 ```py
