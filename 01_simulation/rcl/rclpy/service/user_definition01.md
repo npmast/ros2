@@ -7,7 +7,7 @@ $ cd ~/ros2_ws/srv/my_pkg_msgs
 
 1. MultiSpawn.srv 파일 만들기
 $ mkdir srv
-$ MultiSpawn.srv
+$ nano MultiSpawn.srv
 int 64 num
 ---
 float64[] x
