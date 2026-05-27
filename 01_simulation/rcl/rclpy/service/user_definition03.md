@@ -20,8 +20,8 @@ class MultiSpawning(Node):
 		self.req_teleport = TeleportAbsolute.Request()
 
 	def callback_service(self, request, response):
-		self.req_teleport.x = 1,
-		self.req_teleport.y = 1,
+		self.req_teleport.x = 1.
+		self.req_teleport.y = 1.
 		self.teleport.call_async(self.req_teleport)
 		return response
 		
