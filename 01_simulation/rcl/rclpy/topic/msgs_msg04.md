@@ -13,8 +13,8 @@ from my_pkg_msgs.msg import MyCmdPoseVel
 class MyVel(Node):
 	def __init__(self):
 		super().__init__('turtle_vel')
-		self.sub_pose = self.create_subscription(Pose, '/turtle1/pose', self.callback_pose, 10)
-		self.sub_cmdvel = self.create_subscription(Twist, '/turtle1/cmd_vel', self.callback_cmd, 10)
+		self.sub_pose = self.create_subscription(Pose, '/turtle1/pose', self.callback_pose, 10)				# /turtle1/pose 구독
+		self.sub_cmdvel = self.create_subscription(Twist, '/turtle1/cmd_vel', self.callback_cmd, 10)		# /turtle1/cmd_vel 구독
 		self.cmd_pose = MyCmdPoseVel()			
 
 	def callback_pose(self, msg):
