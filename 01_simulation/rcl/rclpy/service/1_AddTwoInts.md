@@ -1,6 +1,6 @@
 #### 1. 패키지  
 ```c
-example_interfaces/srv/AddTwoInts
+/opt/ros/jazzy/share/example_interfaces/srv/AddTwoInts                        
 $ ros2 interface show example_interfaces/srv/AddTwoInts
 int64 a                // 요청
 int64 b                
