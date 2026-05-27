@@ -26,6 +26,7 @@ float32 theta
 * jupyter  
 <img width="754" height="484" alt="Image" src="https://github.com/user-attachments/assets/98744bd4-ff93-4b95-992b-e83dba1a3b8c" />
 
+  - turtlesim_node 가 실행될 때까지 대기...  
   - future: 응답 결과를 저장하는 객체
   - future.result(): 결과 가지오기  
     trutlesim.srv.TeleportAbsolute_Response()
