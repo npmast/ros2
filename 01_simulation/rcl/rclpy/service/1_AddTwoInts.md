@@ -1,4 +1,4 @@
-#### 1. 패키지  
+#### 1. 패키지 확인    
 ```c
 /opt/ros/jazzy/share/example_interfaces/srv/AddTwoInts                        
 $ ros2 interface show example_interfaces/srv/AddTwoInts
@@ -8,6 +8,7 @@ int64 b
 int64 sum              // 응답
 ```
 #### 2. add_server.py
+> build 없이 python 파일로만 service 를 확인해 본다.
 ```py
 $ nano ~/venvs/jupyter/add_server.py
 import rclpy as rp
