@@ -9,6 +9,7 @@ int64 sum              // 응답
 ```
 #### 2. add_server.py
 ```py
+$ nano ~/venvs/jupyter/add_server.py
 import rclpy as rp
 from rclpy.node import Node
 from example_interfaces.srv import AddTwoInts
@@ -41,6 +42,7 @@ if __name__ == '__main__':
 ```
 #### 3. add_client.py
 ```py
+$ nano ~/venvs/jupyter/add_client.py
 import rclpy as rp
 from rclpy.node import Node
 from example_interfaces.srv import AddTwoInts
