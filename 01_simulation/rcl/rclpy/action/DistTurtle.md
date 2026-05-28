@@ -11,10 +11,20 @@ float32 dist
 ---
 # Result
 float32 pos_x
-float32 pos_y
+float32 pos_yls
 float32 pos_theta
 float32 result_dist
 ---
 # Feedback
 float32 remained_dist
+```
+#### 2
+```c
+$ cd ros2_ws/src/my_pkg_msgs/
+$ nano CMakeList.txt
+ rosidl_generate_interfaces(${PROJECT_NAME}
+    "msg/MyCmdPoseVel.msg"
+    "srv/MultiSpawn.srv"
+    "action/DistTrutle.aciton"
+ )
 ```
