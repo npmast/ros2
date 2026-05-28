@@ -16,6 +16,7 @@ import numpy as np
 to_degree = 180 / np.pi
 to_radian = np.pi / 180
 
+num_turtles = 3
 angle_step = 2 * np.pi / num_turtles          # 터틀심 각도 간격 계산
 
 angle_step                             # radians
