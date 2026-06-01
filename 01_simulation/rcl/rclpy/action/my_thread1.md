@@ -6,14 +6,14 @@ $ nano my_thread.py
 import rclpy as rp
 from rclpy.executors import MultiThreadedExecutor           # 이크젝큐터: 실행기
 from rclpy.node import Node
-from my_pkg.my_publisher import TurtlesimPublisher          # 클래스를 불러온다.
-from my_pkg.my_subscriber import TurtlesimSubscriber
+from my_pkg.my_publisher import Publisher          # 클래스를 불러온다.
+from my_pkg.my_subscriber import Subscriber
 
 def main(args=None):
     rp.init(args=args)
 
-    pub = TurtlesimPublisher()
-    sub = TurtlesimSubscriber()
+    pub = Publisher()
+    sub = Subscriber()
 
     executor = MultiThreadedExecutor()
 
