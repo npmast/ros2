@@ -84,6 +84,8 @@ import time
 
 ```c
 terminal 1
+$ cd ~/ros2_ws
+$ colcon build --packages-select my_pkg
 $ source ~/ros2_ws/install/setup.bash
 $ ros2 run my_pkg my_action_server
 terminal 2
