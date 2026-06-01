@@ -6,7 +6,7 @@ $ nano ~/ros2_wn/src/my_pkg/my_pkg/my_thread2.py
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
-from rclpy.callback_groups import ReentrantCallbackGroup               # 콜백 그룹안에 동시 실행
+from rclpy.callback_groups import ReentrantCallbackGroup               # 여러 콜백함수가 안전하게 동시 실행되는 그룹
 import time
 
 class ThreadTestNode(Node):
