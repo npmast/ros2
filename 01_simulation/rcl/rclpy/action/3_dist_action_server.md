@@ -41,7 +41,7 @@ class DistTurtleServer(Node):										# 액션 서버 노드
         self.previous_pose.x = self.current_pose.x
 		self.previous_pose.y = self.current_pose.y
         return diff_pose
-    def callback_service(self, goal_handle):						# Goal이 들어오면 실행
+    def callback_service(self, goal_handle):						# Goal이 들어오면 실행(목표 상태 추적하고 제어하는 식별자)
         feedback_msg = DistTurtle.Feedback()						# Feedback 객체 생성
         msg = Twist()												# Twist 생성
         msg.linear.x = goal_handle.request.linear_x					# Goal 값 가져오기
