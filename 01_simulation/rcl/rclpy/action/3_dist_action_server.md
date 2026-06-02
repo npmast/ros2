@@ -11,7 +11,7 @@ from rclpy.node import Node
 from my_pkg_msgs.action import DistTurtle							# Action 메시지
 from geometry_msgs.msg import Twist									# 속도 명령
 from turtlesim.msg import Pose										# 터틀 현재 위치
-from my_pkg.my_subscriber import TurtlesimSubscriber				# MY_구독자 클래스
+from my_pkg.my_subscriber import Subscriber							# MY_구독자 클래스
 import time
 import math
 
