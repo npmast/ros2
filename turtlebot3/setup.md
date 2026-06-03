@@ -118,7 +118,7 @@ $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03
    2. 원격 PC 에서 Topic 확인  
    $ ros2 topic list  
    $ ros2 topic echo /scan              // topic 데이터 확인(LiDAR)  
-   $ ros2 topic info /scan              // topic 타입 확인
+   $ ros2 topic info /scan              // topic 타입 확인  
 ==> 동일한 네트워크에 ROS_DOMAIN_ID 가 같으면 노드들이 자동으로 연결된다.  
 ==> ROS2의 기본 미들웨어인 DDS는 멀티캐스트와 검색 메커니즘을 사용하여 같은 도메인ID를 가진 노드를 스스로 찾아내고 통신 채널을 형성한다.
 ### 2. OpenCR 설정
