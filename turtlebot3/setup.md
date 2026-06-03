@@ -131,11 +131,17 @@ $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03
 $ rm -rf ./opencr_update.tar.bz2  
 >$ wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS2/latest/opencr_update.tar.bz2     
 $ tar -xvf opencr_update.tar.bz2
-### 2. 업로드
+#### # 2. 업로드
 >$ cd ./opencr_update  
 $ ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
 ### 3. 자주 사용하는 메시지 타입  
 > std_msgs/msg/String  
 > geometry_msgs/msg/Twist  
 > sensor_msgs/msg/Image  
-> sensor_msgs/msg/LaserScan  
+> sensor_msgs/msg/LaserScan
+### 3. 기본 작동
+> 원격 PC의 터미널을 연다.
+```c
+$ export TURTLEBOT3_MODEL=${TB3_MODEL}
+$ ros2 run turtlebot3_teleop teleop_keyboard
+```
