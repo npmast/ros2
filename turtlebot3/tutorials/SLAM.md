@@ -4,6 +4,9 @@
 ```c
 $ nano ~/.bashrc
 export TURTLEBOT3_MODEL=burger
+or
+$ echo 'export TURTLEBOT3_MODE=burger' >> ~/.bashrc
+$ source ~/.bashrc
 ```
 #### 1. TurtleBot3 Bringup 실행
 > 1. bringup
