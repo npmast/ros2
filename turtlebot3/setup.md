@@ -112,13 +112,15 @@ $ echo 'export LDS_MODEL=LDS-03' >> ~/.bashrc # If you are using LDS-03
 3. 가상 머신 재부팅 > 터미널에서 ip a 로 ip를 확인한다.(VM과 SBC가 동일한 네트워크로 잡혀있어야 한다.)
 4. 확인
    1.  __TurtleBot3 bringup 실행: 원격 PC에서 SBC 사용하려면 먼저 실행되어야 한다.__   
-   $ echo $ROS_DIMAIN_ID  
+   $ echo $ROS_DIMAIN_ID               // DOMAIN_ID 가 원격 Pc와 같아야 한다.
    $ echo $ROS_LOCALHOST_ONLY          // 반드시 0이 나와야 한다.     
    $ __ros2 launch turtlebot3_bringup robot.launch.py__  
    2. 원격 PC 에서 Topic 확인  
    $ ros2 topic list  
    $ ros2 topic echo /scan              // topic 데이터 확인(LiDAR)  
    $ ros2 topic info /scan              // topic 타입 확인
+==> 동일한 네트워크에 ROS_DOMAIN_ID 가 같으면 노드들이 자동으로 연결된다.
+==> ROS2의 기본 미들웨어인 DDS는 멀티캐스트와 검색 메커니즘을 사용하여 같은 도메인ID를 가진 노드를 스스로 찾아내고 통신 채널을 형성한다.
 ### 2. OpenCR 설정
 #### 1. 패키지 설치
 >$ sudo dpkg --add-architecture armhf  
