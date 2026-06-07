@@ -2,9 +2,12 @@
 #### 원격 PC
 ##### 1. Install Dependent ROS2 Packages
 ```c
+1. Install Gazebo
 $ sudo apt install ros-humble-gazebo-*
+2. Install Cartographer
 $ sudo apt install ros-humble-cartographer
 $ sudo apt install ros-humble-cartographer-ros
+3. Install Nabiigation2
 $ sudo apt install ros-humble-navigation2
 $ sudo apt install ros-humble-nav2-bringup
 
