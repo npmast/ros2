@@ -83,7 +83,7 @@ class FrontierExplorer(Node):
             for x in range(1, width - 1):
                 idx = y * width + x
 
-                # 0 = 이동 가능한 공간
+                # 0 : 이동 가능한 공간
                 if data[idx] != 0:
                     continue
 
@@ -97,7 +97,7 @@ class FrontierExplorer(Node):
                 for nx, ny in neighbors:
                     nidx = ny * width + nx
 
-                    # -1 = 아직 모르는 공간
+                    # -1 : 아직 모르는 공간
                     if data[nidx] == -1:
                         world_x = origin_x + x * resolution
                         world_y = origin_y + y * resolution
