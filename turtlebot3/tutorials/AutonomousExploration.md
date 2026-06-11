@@ -7,6 +7,7 @@
 > 0 : 빈 공간
 > -1 : 미 탐색
 > ```
+> Nav2 --> cmd_vel --> TurtleBot3 
 #### 1. 패키지 만들기
 ```c
 $ ~/ros2_ws/src
@@ -151,12 +152,19 @@ $ export TURTLEBOT3_MODEL=burger
 $ ros2 launch turtlebot3_bringup robot.launch.py
 ```
 #### 4. remote PC 
-#### 1. SLAM
+##### 1. SLAM
 ```c
 $ export TURTLEBOT3_MODEL=burger
 $ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=false
 ```
-#### 2. RViz
+##### 2. Nav2 실행
+```c
+$ export TURTLEBOT3_MODEL=burger
+$ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=false
+$ ros2 action list
+/navigate_to_pose 가 있어야 한다.
+```
+##### 3. RViz
 ```c
 $ rviz2
 fixed Frame: map
@@ -166,7 +174,7 @@ TF
 RobotModel
 Odometry
 ```
-#### 3. 자동 탐색 노드
+##### 4. 자동 탐색 노드
 ```c
 $ cd ~/ros2_ws
 $ source install/setup.bash
