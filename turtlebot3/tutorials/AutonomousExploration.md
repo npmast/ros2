@@ -17,7 +17,7 @@
 #### 1. 패키지 만들기
 ```c
 $ ~/ros2_ws/src
-$ ros2 pkg create --build-type ament_python frontier_explorer
+$ ros2 pkg create --build-type ament_python frontier_explorer --dependcies rclpy nav_msgs geometry_msgs nav2_msgs
 ```
 > * 또는 기존 my_pkg 에 작성하고 나중에 독립 패키지로 분리한다.  
 > $ nano ~/ros2_ws/src/my_pkg/frontier_explorer.py 에 작성한다.
