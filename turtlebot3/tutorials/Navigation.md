@@ -1,4 +1,5 @@
 ### Navigation
+: 경로 계산, 장애물 회피, /cmd_vel 생성
 #### 1. TurtleBot 3
 ```c
 $ ssh ubuntu@{IP_ADDRESS_OF_RASPBERRY_IP}
