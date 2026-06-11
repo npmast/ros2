@@ -49,6 +49,7 @@ class FrontierExplorer(Node):
         self.get_logger().info('Frontier Explorer started')
 
     def map_callback(self, msg):
+        self.get_logger().info('Map received')
         if self.goal_sent:
             return
 
