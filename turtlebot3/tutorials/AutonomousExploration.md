@@ -1,6 +1,6 @@
 ### Autonomous Exploration
 > __Frontier 탐색 알고리즘__  
-> 가장 가까운 Frontier 1개를 찾아 Nab2 Goal로 보낸다.  
+> 가장 가까운 Frontier 1개를 찾아 Nav2 Goal로 보낸다.  
 > 즉 Free(백색) 격자와 Unknown(회색) 격자가 맞닿는 경계점(Frontier)들을 찾아 목표점을 설정하고 목적지로 이동, 스캔하여 지도를 업데이트 한다.
 > ```c
 > 100 : 장애물
