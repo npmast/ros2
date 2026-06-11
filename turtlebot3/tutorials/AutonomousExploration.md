@@ -142,7 +142,7 @@ $ cd ~/ros2_ws/src/frontier_explorer
 $ nano setup.py
 entry_points={
     'console_scripts': [
-        'frontier_explorer = frontier_explorer.frontier_explorer_node:main',
+        'frontier_explorer_node = frontier_explorer.frontier_explorer_node:main',
     ],
 },
 ```
@@ -184,5 +184,5 @@ Odometry
 ```c
 $ cd ~/ros2_ws
 $ source install/setup.bash
-$ ros2 run my_explorer frontier_explorer
+$ ros2 run frontier_explorer frontier_explorer_node
 ```
