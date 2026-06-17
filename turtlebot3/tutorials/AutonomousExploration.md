@@ -1,7 +1,8 @@
 ### Autonomous Exploration
 > __Frontier 탐색 알고리즘__  
 > 가장 가까운 Frontier 1개를 찾아 Nav2 Goal로 보낸다.  
-> 즉 Free(백색) 격자와 Unknown(회색) 격자가 맞닿는 경계점(Frontier)들을 찾아 목표점을 설정하고 목적지로 이동, 스캔하여 지도를 업데이트 한다.
+> 즉 Free(백색) 격자와 Unknown(회색) 격자가 맞닿는 경계점(Frontier)들을 찾아 목표점을 설정하고 목적지로 이동, 스캔하여 지도를 업데이트 한다.  
+> SLAM이 지도를 만들고, Frontier Explorer가 다음 탐색 지점을 찾고, Nav2가 그곳까지 이동시키며, RViz는 그 과정을 보여주는 도구이다.
 > ```c
 > 100 : 장애물
 > 0 : 빈 공간
