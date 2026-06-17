@@ -13,7 +13,14 @@
 > 0  0  0 -1 -1
 > 같을 때 여기서 0 옆에 -1 이 있는 지점이 Frontier 이다.
 > ```
-> Nav2 --> cmd_vel --> TurtleBot3 
+> Nav2 --> cmd_vel --> TurtleBot3  
+> | 구성요소          | 역할          | 필수 여부 |  
+  | --                | --           | --        |  
+  | SLAM              | 지도 생성     | 필수     |  
+  | Nav2              | 목표까지 이동  | 필수    |  
+  | Frontier Explorer | 탐색 목표 선정 | 필수    |  
+  | RViz              | 상태 확인      | 선택    |  
+
 #### 1. 패키지 만들기
 ```c
 $ ~/ros2_ws/src
