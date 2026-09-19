@@ -44,6 +44,10 @@ Raspberry Pi Imager 에서 운영체제를 Ubuntu 24.04로 선택하여 설치�
     ```
 ## + raspberryPi5 에 ubuntu 설치하기
 #### 데스크 탑 버전말고 Server 버전을 설치하여 초기 옵션을 지정하고(WiFi) sudo apt install ubuntu-desktop -y 데스크 탑 패키지를 설치한다.
+```c
+sudo apt update && sudo apt upgrade -y
+sudo apt install ubuntu-desktop -y
+```
 #### 1. ssh 연결
   a. Monitor 연결하고 Pi에 전원을 공급한다.  
 > 첫 화면이 켜지면 인터넷을 활성화시켜고 접속 IP 을 확인한다.(ip a or hsotname -I)    
