@@ -3,7 +3,7 @@
 > msg폴더를 생성해야 한다.(토픽에 사용하는 자료형 msg)  
 #### 1. pakage 만들기  
 > 패키지명_msgs 이름으로 만든다.
-> anent_python 에는 메시지를 빌드할 수 없다.
+> ament_python 에는 메시지를 빌드할 수 없다.
 ```c
 $ cd ~/ros2_ws/src
 $ ros2 pkg create --build-type ament_cmake my_pkg_msgs
