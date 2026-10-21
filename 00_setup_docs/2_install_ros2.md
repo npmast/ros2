@@ -49,7 +49,7 @@
 > $ source /opt/ros/jazzy/setup.bash
 > $ ros2 run demo_nodes_py listener
 > ```
-#####  bashrc  설정하기  
+### * bashrc설정 
 새로운 터미널 세션이 시작될 때마다 실행되는 스크립터 파일로  bash 환경을 제공한다.  
 - .bashrc: 터미널이 열릴 때마다 실행되는 스크립트 파일로 설정 파일이다.  
 - source: 현재 셸 환경에 즉시 실행 또는 적용시키는 Bash 내장 명령어이다.
