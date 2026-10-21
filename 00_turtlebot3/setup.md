@@ -147,7 +147,7 @@ $ ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
 ### 3. 기본 작동
 #### 1. TurtleBot3
 ```c
-$ ssh ubuntu@&#123;IP_ADDRESS_OF_RASPBERRY_PI&#125;
+$ ssh ubuntu@IP_ADDRESS_OF_RASPBERRY_PI
 $ export TURTLEBOT3_MODEL=burger
 $ ros2 launch turtlebot3_bringup robot.launch.py
 [INFO] [launch]: All log files can be found below /home/ubuntu/.ros/log/2019-08-19-01-24-19-009803-ubuntu-15310
