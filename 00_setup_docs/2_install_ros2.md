@@ -83,7 +83,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > ```
 > $ nano ~/.bashrc
 > alias jazzy='echo "ROS2 jazzy is now active!"; source /opt/ros/jazzy/setup.bash'
-> alias init='source ~/.bashrc'
+> alias srst='source ~/.bashrc'
 > ```
 ##### Domain
 > ROS2는 DDS(Data Distribution Service)를 통해 통신한다. 이 DDS는 ROS_DOMAIN_ID를 기반으로 통신 참여자들을 그룹화하기 때문에, ID가 다르면 탐색 과정에서 서로 무시된다.  
@@ -91,7 +91,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > .bashrc 파일을 열고 추가한 코드를 삭제하고 새로 작성한다.  
 > ```c
 > $ nano /.bashrc  
-> alias domain="export ROS_DIMAIN_ID=10; echo \"ROS_DOMAIN_ID=10\""  
+> alias domain="export ROS_DIMAIN_ID=10; echo \"ROS_DOMAIN_ID=10\""            # exoprt: 환경변수 선언  
 > alias jazzy="source /opt/ros/jazzy/setup.bash; domain; echo \"ROS jazzy is now active.\""
 > ```
 저장하고 빠져나온다.  
