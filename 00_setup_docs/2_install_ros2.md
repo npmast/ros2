@@ -66,9 +66,16 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > ```
 - alias 적용
 > ```c
-> $ nano /.bashrc  
-> alias jazzy="source /opt/ros/jazzy/setup.bash; echo \"ROS Jazzy is now active.\""
-> $ soruce ~/.bashrc
+> $ nano /.bashrc
+> alias hi='echo "Hello ROS2"'      // 저장하고 빠져나온다.
+> source ~/.bashrc                  // 현재 쉘에 적용
+> $ hi
+> Hello ROS2
+> $ nano ~/.bashrc  
+> alias jazzy="source /opt/ros/jazzy/setup.bash; echo \"ROS Jazzy is now active.\""      // jazzy를 입력하면 ros2적용과 active 출력
+> $ soruce .bashrc
+> $ jazzy
+> ROS Jazzy is now active
 > ```
 > 이제부터는 터미널이 열리고 jazzy 를 입력하면 ros2 가 활성화 된다.  
 ##### Domain
