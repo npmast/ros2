@@ -57,6 +57,7 @@
 #### 2. vscode
 * Extensions 설치: WSL/Python/Pylance/Jupyter/C/C++
 * ROS2 전용 확장 프로그램 설치: Robotics Development Extensions for ROS 2 설치
+* 좌측 하단의 >< 기호를 누르면 잠시 후 WSL:Ubuntu-24.04 연결이 뜬다.
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
   * network_config.txt(ip 설정 및 ssh 접속 정보)
