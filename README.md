@@ -18,8 +18,11 @@
 > ~$ mkdir -p ~/ros2_ws/src
 > ~$ mkdir -p ~/venvs
 > ~$ python3 -m venv --system-site-package ~/venvs/.venv
-> ~$ source ~/venvs/.venvs/bin/activate
+> ~$ python3 -m venv --system-site-package ~/venvs/ros_env
+> ~$ source ~/venvs/.venvs(ros_env)/bin/activate
+> ~$ 
 > ~$ cd ~/ros2_ws
+> +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 > # 폴더 구성
 > WSL2 / Ubuntu 24.04
 >│
@@ -28,8 +31,8 @@
 >└── /home/사용자명/
 >    │
 >    ├── venvs/
->    │   ├── py_env/       # 일반 Python + Jupyter
->    │   ├── ros_env/      # ROS2 + Python
+>    │   ├── .venv/        # 일반 Python + Jupyter
+>    │   ├── ros_env/      # ROS2 + Python + Jupyter + rclpy
 >    │   └── ml_env/       # 머신러닝/딥러닝 (선택)
 >    │
 >    ├── ros2_ws/          # ROS2 패키지 개발
@@ -38,6 +41,7 @@
 >    ├── projects/         # 일반 Python 개발
 >    │
 >    └── notebooks/        # Jupyter 노트북
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 > ```
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
