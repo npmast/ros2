@@ -1,3 +1,44 @@
+## wsl
+#### 1. 설치
+* Windows 기능 켜기/끄기
+  Hyper-v/Linux용 Windows 하위 시스템 그리고 가상 머신 플랫폼 체크 확인하여 필요 파일을 다운로드 받는다.
+* PowerShell 또는 명령 프롬프트를 관리자 권한으로 실행한다.
+> ```
+> $ wsl --list --online                      # 설치 가능한 리눅스 배포판을 확인한다.  
+> $ wsl --install -d Ubuntu-24.04            #24.04를 설치한다.  
+>  사용자가 표시되고(PC 사용자) 바꾸지 않으면 엔터를 치고 비번을 입력한다.
+> $ wsl -l -v                                # wsl 버전 확인한다.
+* 명령 프롬프트 실행
+> ```
+> > wsl                                      # wsl 실행
+> **@***:/mnt/c/Users/NPtr$ cd               # 사용자 디렉터리로 이동
+> ~$ pwd
+> ~$ python3 --version
+> ~$ ls
+> ~$ mkdir -p ~/ros2_ws/src
+> ~$ mkdir -p ~/venvs
+> ~$ python3 -m venv --system-site-package ~/venvs/.venv
+> ~$ source ~/venvs/.venvs/bin/activate
+> ~$ cd ~/ros2_ws
+> # 폴더 구성
+> WSL2 / Ubuntu 24.04
+>│
+>├── ROS2 Jazzy (apt로 시스템에 설치)
+>│
+>└── /home/사용자명/
+>    │
+>    ├── venvs/
+>    │   ├── py_env/       # 일반 Python + Jupyter
+>    │   ├── ros_env/      # ROS2 + Python
+>    │   └── ml_env/       # 머신러닝/딥러닝 (선택)
+>    │
+>    ├── ros2_ws/          # ROS2 패키지 개발
+>    │   └── src/
+>    │
+>    ├── projects/         # 일반 Python 개발
+>    │
+>    └── notebooks/        # Jupyter 노트북
+> ```
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
   * network_config.txt(ip 설정 및 ssh 접속 정보)
