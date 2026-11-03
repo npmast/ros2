@@ -51,9 +51,12 @@
 >    │
 >    └── notebooks/        # Jupyter 노트북
 > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
->
-> ros2 설치를 도규먼트를 참고하여 설치한다.
 > ```
+* ros2 설치를 도규먼트를 참고하여 설치한다.
+* 이후 ros에서 사용할 가상환경을 만든다.(AI 기능을 구현할 가상환경.)
+#### 2. vscode
+* Extensions 설치: WSL/Python/Pylance/Jupyter/C/C++
+* ROS2 전용 확장 프로그램 설치: Robotics Development Extensions for ROS 2 설치
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
   * network_config.txt(ip 설정 및 ssh 접속 정보)
