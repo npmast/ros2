@@ -78,6 +78,13 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > ROS Jazzy is now active
 > ```
 > 이제부터는 터미널이 열리고 jazzy 를 입력하면 ros2 가 활성화 된다.  
+> tip. source ~/.bashrc 명령어도 alias를 만들어 본다.  
+> * 전체
+> ```
+> $ nano ~/.bashrc
+> alias jazzy='echo "ROS2 jazzy is now active!"; source /opt/ros/jazzy/setup.bash'
+> alias init='source ~/.bashrc'
+> ```
 ##### Domain
 > ROS2는 DDS(Data Distribution Service)를 통해 통신한다. 이 DDS는 ROS_DOMAIN_ID를 기반으로 통신 참여자들을 그룹화하기 때문에, ID가 다르면 탐색 과정에서 서로 무시된다.  
 >  ID 값은 0 ~ 232 범위의 값을 가지며 같은 네트워크에 있더라도 ROS_DOMAIN_ID 가 다르면 서로를 인식하지 못하고 완전히 격리된 별개의 ROS2 시스템처럼 동작한다.    
