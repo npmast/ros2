@@ -1,4 +1,4 @@
-## wsl
+# wsl
 #### 1. 설치
 * Windows 기능 켜기/끄기
   Hyper-v, Linux용 Windows 하위 시스템 그리고 가상 머신 플랫폼 이렇게 3개를 체크 확인하여 필요 파일을 다운로드 받는다.
@@ -30,7 +30,7 @@
 > ~$ python -m ipykernel install --user --name .venv --display-name "base"        # 커널생성
 > ~$ jupyter kernelspec list
 > ~$ jupyter kernelspec uninstall base(ros)                                       # 커널삭제
-> ~$ cd ~/ros2_ws
+> 
 > +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 > # 폴더 구성
 > WSL2 / Ubuntu 24.04
@@ -51,6 +51,8 @@
 >    │
 >    └── notebooks/        # Jupyter 노트북
 > ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>
+> ros2 설치를 도규먼트를 참고하여 설치한다.
 > ```
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
