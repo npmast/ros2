@@ -1,7 +1,7 @@
 ## wsl
 #### 1. 설치
 * Windows 기능 켜기/끄기
-  Hyper-v/Linux용 Windows 하위 시스템 그리고 가상 머신 플랫폼 체크 확인하여 필요 파일을 다운로드 받는다.
+  Hyper-v, Linux용 Windows 하위 시스템 그리고 가상 머신 플랫폼 이렇게 3개를 체크 확인하여 필요 파일을 다운로드 받는다.
 * PowerShell 또는 명령 프롬프트를 관리자 권한으로 실행한다.
 > ```
 > $ wsl --list --online                      # 설치 가능한 리눅스 배포판을 확인한다.  
@@ -13,15 +13,23 @@
 > > wsl                                      # wsl 실행
 > **@***:/mnt/c/Users/NPtr$ cd               # 사용자 디렉터리로 이동
 > ~$ pwd
+> ~$ sudo apt update
+> ~$ sudo apt upgrade -y
 > ~$ python3 --version
 > ~$ ls
-> ~$ mkdir -p ~/ros2_ws/src
 > ~$ mkdir -p ~/venvs
 > ~$ python3 -m venv --system-site-package ~/venvs/.venv
-> ~$ python3 -m venv --system-site-package ~/venvs/ros_env
-> ~$ source ~/venvs/.venv(ros_env)/bin/activate
+> ~$ sudo apt install python3.12-venv
+> ~$ python3 -m venv --system-site-package ~/venvs/.venv
+> ~$ source ~/venvs/.venv/bin/activate
+> ~$ pip --version
 > ~$ pip install --upgrade pip
-> ~$ python -m ipykernel install --user --name .venv(ros_ws) --display-name "
+> ~$ pip install jupyterlab
+> ~$ jupyter lab --version
+> ~$ jupyter lab
+> ~$ python -m ipykernel install --user --name .venv --display-name "base"        # 커널생성
+> ~$ jupyter kernelspec list
+> ~$ jupyter kernelspec uninstall base(ros)                                       # 커널삭제
 > ~$ cd ~/ros2_ws
 > +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 > # 폴더 구성
@@ -33,7 +41,7 @@
 >    │
 >    ├── venvs/
 >    │   ├── .venv/        # 일반 Python + Jupyter
->    │   ├── ros_env/      # ROS2 + Python + Jupyter + rclpy
+>    │   ├── ros_env/      # ROS2 + Python + rclpy
 >    │   └── ml_env/       # 머신러닝/딥러닝 (선택)
 >    │
 >    ├── ros2_ws/          # ROS2 패키지 개발
