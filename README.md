@@ -58,6 +58,20 @@
 * Extensions 설치: WSL/Python/Pylance/Jupyter/C/C++
 * ROS2 전용 확장 프로그램 설치: Robotics Development Extensions for ROS 2 설치
 * 좌측 하단의 >< 기호를 누르면 잠시 후 WSL:Ubuntu-24.04 연결이 뜬다.
+#### 3. 실행
+터미널을 연다.
+> ```
+> > wsl
+> $ cd
+> ~$ echo $DISPLAY
+> 0
+> ~$ source /opt/ros/jazzy/setup.bash
+> ~$ ros2 run turtlesim turtlesim_node              # 거북이 창이 열린다.
+> shift + ALT + '-' 키보드로 터미널이 세로로 분할된 새로운 창을 생성한다.
+> > wsl
+> $ cd
+> ~$ source /opt/ros/jazzy/setup.bash
+> ~$ ros2 run turtlesim turtle_teleop_key          # 키보드로 조정이 된다.
 ### 00. Setup_Docs (0단계: 환경설정)  
   * install_guide.md (Ubuntu 및 ROS 설치)
   * network_config.txt(ip 설정 및 ssh 접속 정보)
