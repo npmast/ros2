@@ -19,8 +19,9 @@
 > ~$ mkdir -p ~/venvs
 > ~$ python3 -m venv --system-site-package ~/venvs/.venv
 > ~$ python3 -m venv --system-site-package ~/venvs/ros_env
-> ~$ source ~/venvs/.venvs(ros_env)/bin/activate
-> ~$ 
+> ~$ source ~/venvs/.venv(ros_env)/bin/activate
+> ~$ pip install --upgrade pip
+> ~$ python -m ipykernel install --user --name .venv(ros_ws) --display-name "
 > ~$ cd ~/ros2_ws
 > +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 > # 폴더 구성
