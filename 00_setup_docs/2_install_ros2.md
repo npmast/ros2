@@ -1,5 +1,5 @@
 ## ROS2 문서: Jazzy 설치 방법
-#### 1. 시스템 설정
+### 1. 시스템 설정
 ##### 로케일 설정
 > ```c
 > $ locale  # check for UTF-8
@@ -33,7 +33,7 @@
 > $ sudo apt upgrade
 > $ sudo apt insall ros-jazzy-desktop
 > ```
-#### 2. bash 환경 적용 및 확인
+### 2. bash 환경 적용 및 확인
 > ```c
 > $ source /opt/ros/jazzy/setup.bash
 > $ echo $ROS_DISTRO
@@ -106,7 +106,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 $ echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 $ echo "export ROS_DOMAIN_ID=10" >> ~/.bashrc
 ```
-#### 3. ros2 삭제
+### 3. ros2 삭제
 ```c
 $ ros2 apt remove ros-jazzy-* && sudo apt autoremove
 ```
