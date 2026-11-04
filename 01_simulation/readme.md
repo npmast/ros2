@@ -59,9 +59,9 @@ $ ros2 run turtlesim turtle_teleop_key
 
 ## 3. 노드 통신
 _거북이를 실행한 상태에서_
-> 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;# 해당 통신의 list와 type이 같이 출력된다.
-> 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽의 정보를 출력한다./turtle1이 실행되고 있는 거북이임.
-> 3. $ ros2 interface show geometry_msgs/msg/Twist &emsp;&emsp;# data type 을 알 수 있다.
+> 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;# 해당 통신의 list와 유형이 같이 출력된다.
+> 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽 유형의 정보를 출력한다./turtle1이 실행되고 있는 거북이임.
+> 3. $ ros2 interface show geometry_msgs/msg/Twist &emsp;&emsp;# 해당 유형의 data type 을 알 수 있다.
 1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
    어떤 노드가 특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
