@@ -66,15 +66,14 @@ $ ros2 run turtlesim turtle_teleop_key
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
    * Subscriber(구독자): 특정 주제(Topic)에 메시지를 받는 노드
    * 인터페이스: msg
-   * 토픽
-   > 토픽 조회: ros2 topic list  
-| 토픽                     | 타입                             | 설명    |  
-| ----------------------- | --------------------------------- | ----- |  
-| `/turtle1/cmd_vel`      | geometry_msgs/msg/Twist           | 속도 명령 |  
-| `/turtle1/pose`         | turtlesim/msg/Pose                | 위치 정보 |  
-| `/turtle1/color_sensor` | turtlesim/msg/Color               | 바닥 색상 |  
-| `/parameter_events`     | rcl_interfaces/msg/ParameterEvent | 파라미터  |  
-| `/rosout`               | rcl_interfaces/msg/Log            | 로그    |  
+   * 토픽 조회: ros2 topic list  
+    | 토픽                     | 타입                             | 설명     |  
+    | ------------------------ | -------------------------------- | -------- |  
+    | `/turtle1/cmd_vel`      | geometry_msgs/msg/Twist           | 속도 명령 |  
+    | `/turtle1/pose`         | turtlesim/msg/Pose                | 위치 정보 |  
+    | `/turtle1/color_sensor` | turtlesim/msg/Color               | 바닥 색상 |  
+    | `/parameter_events`     | rcl_interfaces/msg/ParameterEvent | 파라미터  |  
+    | `/rosout`               | rcl_interfaces/msg/Log            | 로그      |  
 
 
    * 실행
