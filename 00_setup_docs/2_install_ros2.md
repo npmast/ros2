@@ -1,4 +1,4 @@
-## ROS2 문서: Jazzy 설치 방법
+## ROS2 문서: Jazzy 설치 방법(ROS2 Documentation 참조)
 ### 1. 시스템 설정
 ##### 로케일 설정
 > ```c
@@ -38,7 +38,7 @@
 > $ source /opt/ros/jazzy/setup.bash
 > $ echo $ROS_DISTRO
 > ```
-##### 예제 실행
+#### 예제 실행 확인
 터미널에서 C++ talker 실행
 > ```c
 > $ source /opt/ros/jazzy/setup.bash
