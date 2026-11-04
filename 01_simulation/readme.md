@@ -235,7 +235,7 @@ _거북이를 실행한 상태에서_
    ---
    float32 remaining                                   // 피드
    - 액션 목표 전달: 반바퀴 이동
-   $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 3.14}"
+   $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 3.14}" --feedback
 ```
    * 내비게이션 이동/로봇 팔 궤적/맵 빌딩/음성 인식 및 응답
 #### 4. 파라미터
