@@ -128,7 +128,7 @@ _거북이를 실행한 상태에서_
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"
    - 앞으로 가면서 회전
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 2.0}}"
-   - 1hz로 계속 실행
+   - 1hz로 계속 실행(--rate 1 생략 가능)
    $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 1.8}}" 
    - 새로운 터미널을 열어 cmd_vel 토픽을 이중으로 발행한다.
    $ ros2 topic pub --rate 1 /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 3.7}}"
