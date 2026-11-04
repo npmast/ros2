@@ -9,7 +9,7 @@
 * __기능을 작은 프로그램으로 분리하고, 서로 메시지로 통신하는 구조__
 #### 1. 패키지(Package)
 : 노드들과 설정 파일들의 폴더 또는 컨테이너 
-> sudo apt install 명령으로 설치한 ros pkg들이 저장되는 곳: /opt/ros/jazzy/
+> sudo apt install 명령으로 설치한 ros pkg들이 저장되는 곳: /opt/ros/jazzy/, 기본 설치 pkg는 ininclude 폴더에 들어 있다.
 ```c
 $ jazzy
 $ ros2 pkg list                              # 현재 만들어진 패키지들이 출력된다.
@@ -58,8 +58,9 @@ $ ros2 run turtlesim turtle_teleop_key
      장거리 이동 같은 제어 가능  
 
 ## 3. 노드 통신
-> 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;&emsp;# 해당 통신의 list와 type이 같이 출력된다.
-> 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽의 정보를 출력한다.
+_거북이를 실행한 상태에서_
+> 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;# 해당 통신의 list와 type이 같이 출력된다.
+> 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽의 정보를 출력한다./turtle1이 실행되고 있는 거북이임.
 > 3. $ ros2 interface show geometry_msgs/msg/Twist &emsp;&emsp;# data type 을 알 수 있다.
 1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
