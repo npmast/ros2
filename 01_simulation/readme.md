@@ -11,22 +11,23 @@
 : 노드들과 설정 파일들의 폴더 또는 컨테이너 
 > sudo apt install 명령으로 설치한 ros pkg들이 저장되는 곳: /opt/ros/jazzy/
 ```c
-$ ros2 pkg list
+$ jazzy
+$ ros2 pkg list                              # 현재 만들어진 패키지들이 출력된다.
 ```
 1. turtlesim pakages
 ```c
-$ ros2 pkg executables turtlesims
-turtlesim draw_square              # 사각형 모양으로 움직임
-turtlesim mimic                    # 복수개 실행시키는 노드
-turtlesim turtle_teleop_key        # 키보드를 퍼블리시하는 노드
-turtlesim turtlesim_node           # 2D 시뮬레이터 노드
+$ ros2 pkg executables turtlesim             # turtlesim 패키지내 실행 가능한 노드 출력
+turtlesim draw_square                        # 사각형 모양으로 움직임
+turtlesim mimic                              # 복수개 실행시키는 노드
+turtlesim turtle_teleop_key                  # 키보드를 퍼블리시하는 노드
+turtlesim turtlesim_node                     # 2D 시뮬레이터 노드
 ```
 #### 2. 노드(Node)
 : 연산을 수행하는 최소 단위의 프로세스로 수 많은 노드들의 집합으로 하나의 로봇 시스템이 만들어 진다.  
 즉 로붓 시스템의 구성은 노드들로 이루어진다. 모터 제어 노드, 라이다(LiDAR) 노드, 카메라 노드, 네비게이션 노드, 센서 융합 노드 등이 하나의 기능을 담당하고  서로 필요한 정보를 통신으로 주고 받는다. 노드는 실제 실행 파일이다.  
 * 노드 조회: ros2 node list  
 * 실행 명령: ros2 run [PKG] [NODE]
-1. turtlesim_node
+1. turtlesim_node 노드
    * 거북이 생성  
    * 이동  
    * 위치 계산  
@@ -35,7 +36,7 @@ turtlesim turtlesim_node           # 2D 시뮬레이터 노드
 - Turtlesim 실행
 $ ros2 run turtlesim turtlesim_node
 ```
-2. turtle_teleop_key
+2. turtle_teleop_key 노드
    * 방향키 --> 이동
    * 회전 가능
    * /turtle1/cmd_vel 토픽으로 속도 데이터를 publish 한다.
@@ -56,10 +57,10 @@ $ ros2 run turtlesim turtle_teleop_key
    * action  
      장거리 이동 같은 제어 가능  
 
-#### 3. 노드 통신
-> $ ros2 [topic|service\action] list -t  
-> [t]  
-> $ ros2 interface show [t]   
+## 3. 노드 통신
+> 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;&emsp;# 해당 통신의 list와 type이 같이 출력된다.
+> 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽의 정보를 출력한다.
+> 3. $ ros2 interface show geometry_msgs/msg/Twist &emsp;&emsp;# data type 을 알 수 있다.
 1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
    어떤 노드가 특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
@@ -75,36 +76,35 @@ $ ros2 run turtlesim turtle_teleop_key
     | `/parameter_events`     | rcl_interfaces/msg/ParameterEvent | 파라미터  |  
     | `/rosout`               | rcl_interfaces/msg/Log            | 로그      |  
 
-
    * 실행
 ```c
-   $ ros2 run turtlesim turtlesim_node                 // turtlesim 패키지의 turtlesim_node 를 실행한다.
+   $ ros2 run turtlesim turtlesim_node                 # turtlesim 패키지의 turtlesim_node 를 실행한다.
 
    - other terminal open
-   $ ros2 topic list                                   // -t: 서비스 타입도 출력한다. -v: 구분 정보 출력
+   $ ros2 topic list                                   # -t: 서비스 타입도 출력한다. -v: 구분 정보 출력
    /parameter_events
    /rosout
    /turtle1/cmd_vel
    /turtle1/color_sensor
    /turtle2/posero
-   $ ros2 topic type /turtle1/pose                     // 해당 토픽의 메시지 타입 확인
+   $ ros2 topic type /turtle1/pose                     # 해당 토픽의 메시지 타입 확인
    turtlesim/msg/Pose
-   $ ros2 topic info /turtle1/pose                     // 해당 토픽의 정보 확인
+   $ ros2 topic info /turtle1/pose                     # 해당 토픽의 정보 확인
    Type: turtlesim/msg/Pose
    Publicsher count: 1
    Subscription count: 0
-   $ ros2 interface show turtlesim/msg/Pose            // 실제 토픽의 데이터 타입 확인
+   $ ros2 interface show turtlesim/msg/Pose            # 실제 토픽의 데이터 타입 확인
    float32 x
    float32 y
    float32 theta
 
-   float32 liner_velocity                               // 속도 성분
+   float32 liner_velocity                              # 속도 성분
    float32 angular_velocity
 
    - /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
-   $ ros2 topic echo /turtle1/pose                     // 토픽 내용 확인
-   $ ros2 topic bw /turtle1/pose                        // 토픽 대역폭 확인
-   $ ros2 topic hz /turtle1/pose                        // 토픽 주기 확인
+   $ ros2 topic echo /turtle1/pose                     # 토픽 내용 확인
+   $ ros2 topic bw /turtle1/pose                       # 토픽 대역폭 확인
+   $ ros2 topic hz /turtle1/pose                       # 토픽 주기 확인
 ```
 
    * 주행명령을 전달하는 cmd_vel 토픽
