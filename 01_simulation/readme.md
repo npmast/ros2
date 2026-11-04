@@ -217,9 +217,10 @@ _거북이를 실행한 상태에서_
    $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
 ```
    * 모터 활성화/좌표 변환/파라미터 변경  
-3. **액션**(Action)
-   토픽과 서비스의 장점을 결합한 통신이다. 클라이언트가 목표를 보내면, 서버는 작업을 수행하면서 중간에 피드백을 전송하고, 완료 시 결과를 반환한다.
-   취소가 가능하며 작업을 안전하게 관리할 수 있다.
+3. **액션**(Action)  
+> 토픽과 서비스의 장점을 결합한 통신이다.  
+> 클라이언트가 목표를 보내면, 서버는 작업을 수행하면서 중간에 피드백을 전송하고, 완료 시 결과를 반환한다.  
+> 취소가 가능하며 작업을 안전하게 관리할 수 있다.  
    * 인터페이스: action
    * 실행
     > 액션 조회: ros2 action list  
@@ -236,8 +237,16 @@ _거북이를 실행한 상태에서_
    - 액션 목표 전달: 반바퀴 이동
    $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 3.14}"
 ```
-   * 내비게이션 이동/로봇 팔 궤적/맵 빌딩/음성 인식 및 응답  
-4. **인터페이스**
+   * 내비게이션 이동/로봇 팔 궤적/맵 빌딩/음성 인식 및 응답
+#### 4. 파라미터
+  > * 두 개의 turrlesim노드(/turtlesim와 /teleop_turtle)를 실행한다.  
+  > ros2 run turtlesim turtlesim_node and ros2 run turtlesim turtle_teleop_key  
+> $ ros2 param list  
+> $ ros2 param get /turtlesim background_g  
+> 86  
+> $ ros2 param set /turtlesim background_r 150&emsp;&emsp;&emsp;# 바탕색이 보라색으로 변한다.  
+> Set parameter successful  
+5. **인터페이스**
   > ROS 노드 간에 데이터를 주고 받기 위해서는 토픽, 서비스, 액션을 사용한다.  
   > 이때 사용되는 데이터 형태를 ROS 2 인터페이스라고 한다.
   > 토픽, 서비스, 액션은 각각 msg, srv, action interface를 사용하고 있다. 
