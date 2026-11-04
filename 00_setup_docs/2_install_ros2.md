@@ -91,7 +91,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > .bashrc 파일을 열고 추가한 코드를 삭제하고 새로 작성한다.  
 > ```c
 > $ nano /.bashrc  
-> alias domain="export ROS_DOMAIN_ID=10; echo \"ROS_DOMAIN_ID=10\""            # exoprt: 환경변수 선언  
+> alias domain="export ROS_DOMAIN_ID=10; echo 'ROS_DOMAIN_ID=10'"            # exoprt: 환경변수 선언  
 > alias jazzy="source /opt/ros/jazzy/setup.bash; domain; echo 'ROS jazzy is now active!'"
 > ```
 저장하고 빠져나온다.  
@@ -100,7 +100,7 @@ bashrc 파일을 열고 마지막 줄에 아래 내용을 추가하고 저장한
 > $ jazzy
 > ```
 > ROS_DOMAIN_ID=10  
-> ROS2 jazzy is now active.    
+> ROS2 jazzy is now active!    
 #### 셀 시작 스크립트에 소싱하기
 ```c
 $ echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
