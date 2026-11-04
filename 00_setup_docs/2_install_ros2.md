@@ -38,7 +38,7 @@
 > $ source /opt/ros/jazzy/setup.bash
 > $ echo $ROS_DISTRO
 > ```
-#### 예제 실행 확인
+#### * 예제 실행 확인
 터미널에서 C++ talker 실행
 > ```c
 > $ source /opt/ros/jazzy/setup.bash
