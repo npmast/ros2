@@ -16,7 +16,7 @@ $ ros2 pkg list                              # 현재 만들어진 패키지들�
 ```
 1. turtlesim pakages
 ```c
-$ ros2 pkg executables turtlesim             # turtlesim 패키지내 실행 가능한 노드 출력
+$ ros2 pkg executables turtlesim             # turtlesim 패키지내 실행 가능한 노드들이 출력
 turtlesim draw_square                        # 사각형 모양으로 움직임
 turtlesim mimic                              # 복수개 실행시키는 노드
 turtlesim turtle_teleop_key                  # 키보드를 퍼블리시하는 노드
@@ -33,15 +33,15 @@ turtlesim turtlesim_node                     # 2D 시뮬레이터 노드
    * 위치 계산  
    * 배경 변경 등  
 ```c
-- Turtlesim 실행
-$ ros2 run turtlesim turtlesim_node
+- Turtlesim 패키지에 있는 turtlesim_node 실행
+$ ros2 run turtlesim turtlesim_node          # turtle1 이라는 이름의 거북이가 출력된다.
 ```
 2. turtle_teleop_key 노드
    * 방향키 --> 이동
    * 회전 가능
    * /turtle1/cmd_vel 토픽으로 속도 데이터를 publish 한다.
 ```c
-- keyboard 방향키
+- Turtlesim 패키지에 있는 turtle_teleop_key 노드 실행 
 $ ros2 run turtlesim turtle_teleop_key
 ```
 3. 노드에 기능을 추가한 객체 생성
@@ -62,7 +62,84 @@ _거북이를 실행한 상태에서_
 > 1. $ ros2 [topic|service|action] list -t &emsp;&emsp;&emsp;# 해당 통신의 list와 유형이 같이 출력된다.
 > 2. $ ros2 topic info /turtle1/cmd_vel &emsp;&emsp;&emsp;# topic 통신의 /turtle1/cmd_vel 토픽 유형의 정보를 출력한다./turtle1이 실행되고 있는 거북이임.
 > 3. $ ros2 interface show geometry_msgs/msg/Twist &emsp;&emsp;# 해당 유형의 data type 을 알 수 있다.
-1. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
+  
+1. **서비스**(service): 요청/응답  
+   클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
+   요청과 응답 메시지에는 각 데이터 타입이 존재한다.
+   * 인터페이스: srv
+   * 서비스 조회: ros2 service list
+   * 관련 서비스
+     | 서비스                          |  역할            |  
+     | ------------------------------- | ---------------- |  
+     | `/spawn`                        | 거북이 추가 생성  |  
+     | `/kill`                         | 거북이 삭제      |  
+     | `/clear`                        | 화면 지우기      |  
+     | `/reset`                        | 초기화           |  
+     | `/turtle1/set_pen`              | 펜 설정          |  
+     | `/turtle1/teleport_absolute`    | 순간이동         |  
+     | `/turtle1/teleport_relative`    | 상대 이동        |  
+
+   * 실행: *service list - service type - interface show - service call*
+```c
+   $ ros2 pkg list
+   $ ros2 pkg executables turtlesim
+   $ ros2 run turtlesim turtlesim_node
+
+   - other terminal open 
+   $ ros2 service list                                           // turtlesim_node의 서비스 목록 확인. info 를 이용해도 된다.
+   $ ros2 service type /clear                                    // /clear 서비스의 타입 확인
+   std_srvs/srv/Empty
+   $ ros2 service type /kill                                      // /kill 서비스의 타입 확인
+   turtlesim/srv/Kill
+   $ ros2 service type /spawn                                     // /spawn 서비스의 타입 확인
+   turtlesim/srv/Spawn
+   $ ros2 service type /turtle1/teleport_absolute                // /turtle1/teleport_absolute 서비스의 타입 확인
+   turtlesim/srv/TeleportAbsolute
+   $ ros2 interface show turtlesim/srv/TeleportAbsolute          // turtlesim/srv/TeleportAbsolute 타입의 인터페이스 확인
+   float32 x
+   float32 y
+   float32 theta
+   ---
+```
+  * 서비스 콜
+```c
+   - TeleportAbsolute 서비스 콜(순간 이동): /turtle1/teleport_absolute 서비스를 실행한다. turtlesim/srv/TeleportAbsolute 유형의 인터페이스를 사용한다.
+   $ ros2 service call /turtle1/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"     
+   requester: making request: tur~            // 요청 
+
+   response:                                  // 응답
+   tur~
+   - reset service: 처음 위치로 이동
+   $ ros2 service list
+   $ ros2 service type /reset
+   std_srvs/srv/Empty
+   $ ros2 interface show std_srvs/srv/Empty
+   ---
+   $ ros2 service call /reset std_srvs/srv/Empty {}
+
+   - spawn service: 새로 생성
+   $ ros2 service list
+   $ ros2 service type /spawn
+   turtlesim/srv/Spawn
+   $ ros2 interface show turtlesim/srv/Spawn
+   float32 x
+   float32 y
+   float32 theta
+   string name # Optional.
+   ---
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 9, theta: 1.57, name: 'one'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 7, theta: 1.57, name: 'two'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 5, theta: 1.57, name: 'three'}"
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 3, theta: 1.57, name: 'four'}"
+   $ ros2 service call /kill turtlesim/srv/Kill "name: 'turtle1'"
+   string nameros
+   - namespace: turtlesim1, turtlesim2
+   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // turtlesim2 생성  
+   $ ros2 service list                                                                    // turtlesim2가 보인다.
+   $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
+```
+   * 모터 활성화/좌표 변환/파라미터 변경
+2. **토픽**(Topic) : 기본적인 통신 방식. 계속 발행  
    노드 간에 데이터를 주고 받는 단방향 통신으로 일대일, 다대일, 다대다 통신이 가능하다.
    어떤 노드가 특정 채널(토픽)에 데이터를 지속적으로 흘려보내면 그 채널을 구독하여 데이터를 받는다.  
    * Publisher(발행자): 특정 주제(Topic)에 메시지를 발행하는 노드
@@ -143,80 +220,6 @@ _거북이를 실행한 상태에서_
    $ rqt                                          // Debug, tf 체크 해제
 ```
    * 카메라 스트리밍/라이다 포인트 클라우드/ IMU 센서 데이터/로봇 속도  
-2. **서비스**(service): 요청/응답  
-   클라이언트 노드와 서버 노드간에 **요청**(request)과 **응답**(response)으로 이루어지는 통신 방식.
-   요청과 응답 메시지에는 각 데이터 타입이 존재한다.
-   * 인터페이스: srv
-   * 서비스 조회: ros2 service list
-   * 관련 서비스
-     | 서비스                          |  역할            |  
-     | ------------------------------- | ---------------- |  
-     | `/spawn`                        | 거북이 추가 생성  |  
-     | `/kill`                         | 거북이 삭제      |  
-     | `/clear`                        | 화면 지우기      |  
-     | `/reset`                        | 초기화           |  
-     | `/turtle1/set_pen`              | 펜 설정          |  
-     | `/turtle1/teleport_absolute`    | 순간이동         |  
-     | `/turtle1/teleport_relative`    | 상대 이동        |  
-
-   * 실행: *service list - service type - interface show - service call*
-```c
-   $ ros2 run turtlesim turtlesim_node
-
-   - other terminal open 
-   $ ros2 service list                                           // 서비스 목록 확인. info 를 이용해도 된다.
-   $ ros2 service type /clear
-   std_srvs/srv/Empty
-   $ ros2 service type /kill
-   turtlesim/srv/Kill
-   $ ros2 service type /spawn
-   turtlesim/srv/Spawn
-   $ ros2 service type /turtle1/teleport_absolute                // 해당 서비스 타입 확인
-   turtlesim/srv/TeleportAbsolute
-   $ ros2 interface show turtlesim/srv/TeleportAbsolute/          // 해당 서비스 타입의 데이터 타입
-   float32 x
-   float32 y
-   float32 theta
-   ---
-```
-  * 서비스 콜
-```c
-   - TeleportAbsolute 서비스 콜(순간 이동)
-   $ ros2 service call /turtle1/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 3, y: 7, theta: 0}"     
-   requester: making request: tur~            // 요청 
-
-   response:                                  // 응답
-   tur~
-   - reset service 처음 위치로 이동
-   $ ros2 service list
-   $ ros2 service type /reset
-   std_srvs/srv/Empty
-   $ ros2 interface show std_srvs/srv/Empty
-   ---
-   $ ros2 service call /reset std_srvs/srv/Empty {}
-
-   - spawn service 새로 생성
-   $ ros2 service list
-   $ ros2 service type /spawn
-   turtlesim/srv/Spawn
-   $ ros2 interface show turtlesim/srv/Spawn
-   float32 x
-   float32 y
-   float32 theta
-   string name # Optional.
-   ---
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 9, theta: 1.57, name: 'one'}"
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 7, theta: 1.57, name: 'two'}"
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 5, theta: 1.57, name: 'three'}"
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 5.5, y: 3, theta: 1.57, name: 'four'}"
-   $ ros2 service call /kill turtlesim/srv/Kill "name: 'turtle1'"
-   string nameros
-   - namespace: turtlesim1, turtlesim2
-   $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 5, theta: 0, name: ''}"      // turtlesim2 생성  
-   $ ros2 service list                                                                    // turtlesim2가 보인다.
-   $ ros2 service call /turtle2/teleport_absolute turtlesim/srv/TeleportAbsolute "{x: 5, y: 5, theta: 0}"
-```
-   * 모터 활성화/좌표 변환/파라미터 변경  
 3. **액션**(Action)  
 > 토픽과 서비스의 장점을 결합한 통신이다.  
 > 클라이언트가 목표를 보내면, 서버는 작업을 수행하면서 중간에 피드백을 전송하고, 완료 시 결과를 반환한다.  
