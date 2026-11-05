@@ -165,13 +165,13 @@ _거북이를 실행한 상태에서_
    /turtle1/cmd_vel
    /turtle1/color_sensor
    /turtle2/posero
-   $ ros2 topic type /turtle1/pose                     # 해당 토픽의 메시지 타입 확인
+   $ ros2 topic type /turtle1/pose                     # 해당 토픽의 타입 확인
    turtlesim/msg/Pose
    $ ros2 topic info /turtle1/pose                     # 해당 토픽의 정보 확인
    Type: turtlesim/msg/Pose
    Publicsher count: 1
    Subscription count: 0
-   $ ros2 interface show turtlesim/msg/Pose            # 실제 토픽의 데이터 타입 확인
+   $ ros2 interface show turtlesim/msg/Pose            # 해당 토픽의 데이터 타입 확인
    float32 x
    float32 y
    float32 theta
@@ -180,7 +180,7 @@ _거북이를 실행한 상태에서_
    float32 angular_velocity
 
    - /turtlesim 노드는 /turtle1/pose 토픽을 발행한다. 터미널에서 구독하기(확인)  
-   $ ros2 topic echo /turtle1/pose                     # 토픽 내용 확인
+   $ ros2 topic echo /turtle1/pose                     # 터미널에서 토픽을 구독할 때는 echo를 사용한다.
    $ ros2 topic bw /turtle1/pose                       # 토픽 대역폭 확인
    $ ros2 topic hz /turtle1/pose                       # 토픽 주기 확인
 ```
@@ -188,20 +188,20 @@ _거북이를 실행한 상태에서_
    * 주행명령을 전달하는 cmd_vel 토픽
 ```c
    $ ros2 topic list -t
-   /turtle1/cmd_vel [geometry_msgs/msg/Twist]        // Twist는 선속도, 각속도를 표현하는 ROS2 표준 메시
-   $ ros2 interface show geometry_msgs/msg/Twist      // 데이터 타입 확인
-   Vevtor3   linear                                    // 3차원 벡터 리니어
+   /turtle1/cmd_vel [geometry_msgs/msg/Twist]          # Twist는 선속도, 각속도를 표현하는 ROS2 표준 메시
+   $ ros2 interface show geometry_msgs/msg/Twist       # 데이터 타입 확인
+   Vevtor3   linear                                    # 3차원 벡터 리니어
             float64 x
             float64 y
             float64 z
-   Vector3   angular                          // 3차원 벡터 앵귤러(x, y, z 축을 중심으로 한 회전 값)
+   Vector3   angular                                   # 3차원 벡터 앵귤러(x, y, z 축을 중심으로 한 회전 값)
             float64 x
             float64 y
             float64 z
 ```
   * 토픽 퍼블리시
 ```c
-   - /turtle1/cmd_vel 토픽에 1번만 발행. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
+   - /turtle1/cmd_vel 토픽에 1번만 발행. 터미널에서 발행할 때는 pub을 사용한다. 실질적 turtlesim이 사용하는 값은 linear.x와 angular.z 뿐이다.
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 0.0}}"
    - 앞으로 가면서 회전
    $ ros2 topic pub --once /turtle1/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 2.0}, angular: {z: 2.0}}"
